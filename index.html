@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SF Motos Alta Performance | Oficina de Moto de Alta Performance em Resende - RJ</title>
+<meta name="description" content="SF Motos Alta Performance: oficina especializada em motos de alta cilindrada em Resende, RJ. Tecnologia, honestidade e transparência em cada atendimento.">
+<meta name="theme-color" content="#0D0D0D">
+<link rel="icon" type="image/png" href="imgs/logo-sf.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "SF Motos Alta Performance",
+  "description": "Oficina especializada em motos de alta performance e alto padrão em Resende, RJ. Tecnologia, honestidade e transparência.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "R. Dalva Menandro, 34 - Comercial",
+    "addressLocality": "Resende",
+    "addressRegion": "RJ",
+    "postalCode": "27541-180",
+    "addressCountry": "BR"
+  },
+  "openingHours": "Mo-Sa 08:00-18:00",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "bestRating": "5"
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   TOKENS & RESET
+   ========================================================= */
+:root{
+  --black:#0D0D0D; --graphite:#1A1A1A; --graphite-2:#232323;
+  --red:#C41E1E; --red-dark:#8A1414; --white:#F5F5F0; --gray:#8C8C8C;
+  --line: rgba(245,245,240,0.08);
+  --line-strong: rgba(245,245,240,0.16);
+  --ease: cubic-bezier(.16,.84,.44,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden;}
+html.has-cursor, html.has-cursor body{cursor:none;}
+::selection{background:var(--red);color:var(--white);}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--red);}
+h1,h2,h3{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.01em;line-height:1.02;}
+.section{padding:150px 6vw;position:relative;scroll-margin-top:84px;}
+.section-fade{position:absolute;left:0;right:0;height:220px;pointer-events:none;z-index:1;}
+.section-fade.top{top:0;transform:translateY(-100%);}
+.section-fade.bottom{bottom:0;transform:translateY(100%);}
+.tone-graphite{background:var(--graphite);}
+.tone-graphite .section-fade.top{background:linear-gradient(to bottom, var(--black), var(--graphite));}
+.tone-graphite .section-fade.bottom{background:linear-gradient(to bottom, var(--graphite), var(--black));}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:64px;flex-wrap:wrap;gap:20px;position:relative;z-index:2;}
+.section-head h2{font-size:clamp(2.2rem,4.4vw,3.4rem);}
+.btn-primary{position:relative;background:var(--red);color:var(--white);padding:16px 34px;font-family:'Oswald',sans-serif;font-weight:600;
+  letter-spacing:.06em;font-size:.92rem;text-transform:uppercase;overflow:hidden;transition:transform .3s var(--ease);display:inline-block;}
+.btn-primary:hover{transform:translateY(-2px);}
+.btn-primary:focus-visible,.btn-ghost:focus-visible,.btn-dark:focus-visible,.garage-video-btn:focus-visible{outline:2px solid var(--white);outline-offset:3px;}
+.btn-primary::after{content:"";position:absolute;inset:0;background:var(--red-dark);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);z-index:-1;}
+.btn-primary:hover::after{transform:scaleX(1);}
+.btn-ghost{font-family:'JetBrains Mono',monospace;font-size:.82rem;letter-spacing:.04em;color:var(--white);border-bottom:1px solid var(--line);padding-bottom:4px;transition:border-color .25s;}
+.btn-ghost:hover{border-color:var(--red);}
+
+/* Generic scroll-reveal */
+[data-reveal]{opacity:0;transform:translateY(38px);transition:opacity .8s var(--ease), transform .8s var(--ease);transition-delay:var(--d,0ms);}
+[data-reveal].in-view{opacity:1;transform:none;}
+
+/* Technical corner marks — motorsport/engineering detail */
+.tech-corner{position:absolute;width:16px;height:16px;pointer-events:none;opacity:.35;z-index:2;}
+.tech-corner.tl{top:22px;left:22px;border-top:1px solid var(--gray);border-left:1px solid var(--gray);}
+.tech-corner.tr{top:22px;right:22px;border-top:1px solid var(--gray);border-right:1px solid var(--gray);}
+.tech-corner.bl{bottom:22px;left:22px;border-bottom:1px solid var(--gray);border-left:1px solid var(--gray);}
+.tech-corner.br{bottom:22px;right:22px;border-bottom:1px solid var(--gray);border-right:1px solid var(--gray);}
+
+/* =========================================================
+   CUSTOM CURSOR (desktop only)
+   ========================================================= */
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;
+  transform:translate3d(-50%,-50%,0);will-change:transform;}
+.cursor-dot{width:6px;height:6px;background:var(--red);opacity:0;transition:opacity .2s;}
+.cursor-ring{width:36px;height:36px;border:1px solid rgba(245,245,240,.5);opacity:0;
+  transition:opacity .2s, width .25s var(--ease), height .25s var(--ease), border-color .25s;}
+html.has-cursor .cursor-dot,html.has-cursor .cursor-ring{opacity:1;}
+html.has-cursor .cursor-ring.cursor-hover{width:64px;height:64px;border-color:var(--red);}
+html.has-cursor .cursor-ring.cursor-drag{width:88px;height:88px;border-color:var(--red);background:rgba(196,30,30,.12);}
+
+/* =========================================================
+   NAV
+   ========================================================= */
+nav{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
+  padding:22px 6vw;z-index:100;transition:background .4s var(--ease), padding .4s var(--ease), border-color .4s var(--ease), backdrop-filter .4s;
+  border-bottom:1px solid transparent;}
+nav.is-scrolled{background:rgba(13,13,13,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  padding:14px 6vw;border-bottom-color:var(--line);}
+.logo-mark{display:flex;align-items:center;gap:10px;font-family:'Oswald',sans-serif;font-weight:600;font-size:1.15rem;letter-spacing:.06em;position:relative;z-index:2;}
+.logo-mark span{color:var(--red);}
+.logo-mark-img{width:38px;height:38px;object-fit:contain;display:block;flex-shrink:0;}
+.nav-links{display:flex;align-items:center;gap:34px;font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;}
+.nav-links a:not(.nav-cta){opacity:.75;transition:opacity .25s;position:relative;}
+.nav-links a:not(.nav-cta):hover{opacity:1;}
+.nav-links a:not(.nav-cta)::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--red);
+  transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease);}
+.nav-links a:not(.nav-cta):hover::after{transform:scaleX(1);}
+.nav-cta{font-family:'Oswald',sans-serif;font-weight:600;background:var(--red);color:var(--white);padding:10px 20px;letter-spacing:.06em;transition:background .25s;}
+.nav-cta:hover{background:var(--red-dark);}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:0;cursor:pointer;z-index:110;}
+.nav-toggle span{display:block;width:100%;height:1px;background:var(--white);transition:transform .3s var(--ease), opacity .3s var(--ease);}
+html.nav-open .nav-toggle span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+html.nav-open .nav-toggle span:nth-child(2){opacity:0;}
+html.nav-open .nav-toggle span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+
+@media(max-width:840px){
+  .nav-toggle{display:flex;}
+  .nav-links{position:fixed;inset:0;flex-direction:column;justify-content:center;align-items:flex-start;
+    padding:0 8vw;background:rgba(13,13,13,.98);backdrop-filter:blur(14px);gap:26px;
+    transform:translateX(100%);transition:transform .45s var(--ease);font-size:1.3rem;}
+  html.nav-open .nav-links{transform:translateX(0);}
+  .nav-links a{opacity:1 !important;}
+  .nav-cta{margin-top:12px;}
+}
+
+/* =========================================================
+   SCROLL-SCRUBBED VIDEO SECTIONS (shared — HERO + SECOND VIDEO)
+   ========================================================= */
+.scrub-scroll{position:relative;height:420vh;}
+.scrub-scroll.short{height:280vh;}
+.scrub{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;padding:0 6vw;overflow:hidden;background:var(--black);}
+
+.scrub-video-wrap{position:absolute;inset:0;z-index:0;background:linear-gradient(150deg,var(--graphite) 0%,var(--black) 70%);}
+.scrub-video-wrap video,.scrub-video-wrap canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+/* canvas = primary render path: frames are pre-decoded once, then looked up
+   instantly on scroll (no live seeking = no stutter, full native resolution
+   = no extra softening). The <video> underneath is only the decode source
+   and doubles as the direct-seek fallback for browsers where priming fails. */
+.scrub-video-wrap canvas{opacity:0;transition:opacity .6s ease;}
+.scrub-video-wrap canvas.is-ready{opacity:1;}
+.scrub-video-wrap video{opacity:0;pointer-events:none;}
+.scrub-video-wrap.fallback-mode canvas{display:none;}
+.scrub-video-wrap.fallback-mode video{transition:opacity .6s ease;}
+.scrub-video-wrap.fallback-mode video.is-ready{opacity:1;}
+.scrub-video-wrap.video-error video,.scrub-video-wrap.video-error canvas{display:none;}
+
+.phase-anchor{position:absolute;top:44%;left:0;width:1px;height:1px;}
+
+.hero-text-layer{position:relative;z-index:3;height:100%;display:flex;align-items:center;}
+.hero-text-layer .scrub-content{position:absolute;left:0;max-width:920px;}
+.phase-block{will-change:opacity,transform,filter;pointer-events:none;}
+.phase-block.is-active{pointer-events:auto;}
+
+.scrub-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(to right, rgba(13,13,13,.94) 0%, rgba(13,13,13,.72) 32%, rgba(13,13,13,.28) 58%, transparent 78%);}
+.scrub-scrim.from-right{background:linear-gradient(to left, rgba(13,13,13,.94) 0%, rgba(13,13,13,.72) 32%, rgba(13,13,13,.28) 58%, transparent 78%);}
+.scrub-vignette{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 80% 70% at 60% 50%, transparent 45%, rgba(13,13,13,.85) 100%);}
+.scrub-grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size:180px 180px;}
+.scrub-endfade{position:absolute;inset:0;z-index:2;pointer-events:none;background:var(--black);opacity:0;}
+
+.scrub-content{position:relative;z-index:3;max-width:920px;}
+.scrub-content.align-right{margin-left:auto;text-align:right;}
+.scrub-content .eyebrow{margin-bottom:22px;display:flex;align-items:center;gap:10px;}
+.scrub-content.align-right .eyebrow{justify-content:flex-end;}
+.scrub-content .eyebrow::before{content:"";width:26px;height:1px;background:var(--red);display:inline-block;}
+.scrub-content.align-right .eyebrow::after{content:"";width:26px;height:1px;background:var(--red);display:inline-block;}
+.scrub-content.align-right .eyebrow::before{display:none;}
+
+h1.title,.scrub-content h2{font-size:clamp(3rem,8vw,6.4rem);font-weight:700;margin-bottom:6px;}
+h1.title .accent,.scrub-content h2 .accent,.garage-title .accent{color:var(--red);}
+.hero-tagline{font-family:'JetBrains Mono',monospace;font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gray);
+  margin:20px 0 38px;}
+.scrub-sub{font-family:'Inter',sans-serif;font-weight:300;font-size:clamp(1rem,1.6vw,1.25rem);color:var(--gray);
+  max-width:520px;margin:22px 0 40px;line-height:1.55;}
+.scrub-content.align-right .scrub-sub{margin-left:auto;}
+.stat-row{display:flex;gap:48px;margin-top:36px;}
+.stat b{font-family:'Oswald',sans-serif;font-size:2.4rem;color:var(--red);display:block;}
+.stat span{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.1em;color:var(--gray);text-transform:uppercase;}
+
+.scrub-actions{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+.scrub-content.align-right .scrub-actions{justify-content:flex-end;}
+
+/* second-video "SERVIÇOS" reveal phase */
+.reveal-word{font-size:clamp(3.4rem,10vw,8rem);font-weight:700;}
+.reveal-hint{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.15em;color:var(--gray);margin-top:26px;display:inline-block;}
+.reveal-hint:hover{color:var(--white);}
+
+/* scroll cue with progress line */
+.scroll-cue{position:absolute;bottom:38px;left:6vw;display:flex;align-items:center;gap:14px;z-index:3;
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);
+  transition:opacity .4s ease;}
+.scroll-cue.right{left:auto;right:6vw;flex-direction:row-reverse;}
+.cue-line{width:1px;height:44px;background:rgba(245,245,240,.18);position:relative;overflow:hidden;}
+.cue-fill{position:absolute;left:0;top:0;width:100%;height:100%;background:var(--red);transform:scaleY(0);transform-origin:top;}
+
+/* =========================================================
+   PROCESSOS — editorial timeline, no video
+   ========================================================= */
+.process-timeline{position:relative;z-index:2;display:grid;gap:0;max-width:920px;}
+.timeline-track{position:absolute;left:29px;top:10px;bottom:10px;width:1px;background:var(--line-strong);z-index:0;}
+@media(min-width:720px){.timeline-track{left:53px;}}
+.timeline-fill{position:absolute;left:0;top:0;width:100%;height:100%;background:var(--red);transform:scaleY(0);transform-origin:top;
+  transition:transform .1s linear;}
+.process-step{position:relative;z-index:1;display:grid;grid-template-columns:60px 1fr;gap:22px;align-items:start;
+  padding:38px 0;border-bottom:1px solid var(--line);transition:padding-left .35s var(--ease);}
+@media(min-width:720px){.process-step{grid-template-columns:108px 1fr;gap:36px;}}
+.process-step:last-child{border-bottom:0;}
+.process-step:hover{padding-left:14px;}
+.step-num{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2.4rem,4.5vw,3.6rem);color:var(--graphite-2);
+  -webkit-text-stroke:1px var(--line-strong);transition:color .35s, -webkit-text-stroke-color .35s, transform .35s var(--ease);
+  line-height:1;}
+.process-step:hover .step-num,.process-step.in-view .step-num{color:transparent;-webkit-text-stroke-color:var(--red);}
+.process-step:hover .step-num{transform:scale(1.08);}
+.step-body h3{font-size:clamp(1.3rem,2.2vw,1.9rem);margin-bottom:10px;letter-spacing:.02em;position:relative;padding-left:18px;}
+.step-body h3::before{content:"";position:absolute;left:0;top:.35em;width:8px;height:8px;background:var(--graphite-2);
+  transition:background .3s;}
+.process-step:hover .step-body h3::before{background:var(--red);}
+.step-body p{color:var(--gray);font-weight:300;line-height:1.6;font-size:1rem;max-width:560px;padding-left:18px;}
+
+/* =========================================================
+   SERVIÇOS — asymmetric editorial grid
+   ========================================================= */
+.services-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-auto-rows:minmax(210px,auto);gap:1px;background:var(--line);border:1px solid var(--line);}
+.service-card{background:var(--black);padding:34px 30px;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:space-between;transition:background .35s;}
+.service-card:hover{background:var(--graphite-2);}
+.service-card::before{content:"";position:absolute;left:0;top:0;width:2px;height:0;background:var(--red);transition:height .35s var(--ease);}
+.service-card:hover::before{height:100%;}
+.service-card .num-bg{position:absolute;right:18px;top:-6px;font-family:'Oswald',sans-serif;font-weight:700;
+  font-size:clamp(4rem,7vw,6.4rem);line-height:1;color:transparent;-webkit-text-stroke:1px var(--line-strong);
+  transition:-webkit-text-stroke-color .4s;pointer-events:none;}
+.service-card:hover .num-bg{-webkit-text-stroke-color:rgba(196,30,30,.45);}
+.service-card .icon{width:30px;height:30px;color:var(--red);opacity:.9;margin-bottom:auto;}
+.service-card .icon svg{width:100%;height:100%;}
+.service-card .num{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--red);letter-spacing:.1em;margin-bottom:18px;display:block;}
+.service-card h3{font-size:1.18rem;margin-bottom:10px;letter-spacing:.02em;position:relative;z-index:1;}
+.service-card p{color:var(--gray);font-size:.88rem;font-weight:300;line-height:1.55;position:relative;z-index:1;max-width:32ch;}
+.service-card.featured{grid-column:span 2;grid-row:span 2;background:linear-gradient(155deg, rgba(196,30,30,.10), var(--black) 55%);}
+.service-card.featured h3{font-size:clamp(1.5rem,2.4vw,2rem);}
+.service-card.featured .icon{width:42px;height:42px;}
+.service-card.wide{grid-column:span 2;}
+.service-seal{display:flex;align-items:center;gap:14px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line);position:relative;z-index:1;}
+.service-seal img{width:56px;height:56px;border-radius:50%;flex-shrink:0;object-fit:cover;background:var(--graphite-2);}
+.service-seal-text{display:flex;flex-direction:column;gap:3px;}
+.service-seal-text b{font-family:'Oswald',sans-serif;font-weight:600;font-size:.86rem;letter-spacing:.02em;text-transform:uppercase;color:var(--white);}
+.service-seal-text span{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.05em;color:var(--red);text-transform:uppercase;}
+@media(max-width:900px){
+  .services-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .service-card.featured,.service-card.wide{grid-column:1/-1;grid-row:auto;}
+}
+@media(max-width:560px){.services-grid{grid-template-columns:1fr;}}
+
+/* =========================================================
+   EXPERIÊNCIA DA OFICINA — "por trás da performance"
+   editorial photo wall + large video (vídeo ~60% / galeria ~40%)
+   ========================================================= */
+.garage-compose{position:relative;z-index:2;display:grid;
+  grid-template-columns:1fr 1.5fr;grid-template-rows:auto auto;
+  column-gap:56px;row-gap:44px;}
+
+.garage-intro{grid-column:1;grid-row:1;max-width:420px;}
+.garage-intro .eyebrow{margin-bottom:18px;}
+.garage-title{font-size:clamp(2.4rem,4.4vw,3.8rem);margin-bottom:22px;}
+.garage-sub{color:var(--gray);font-weight:300;line-height:1.6;font-size:1rem;max-width:36ch;}
+
+.garage-grid{grid-column:1;grid-row:2;display:grid;grid-template-columns:repeat(2,1fr);gap:18px;align-content:start;}
+.garage-photo{position:relative;overflow:hidden;margin:0;background:var(--graphite);aspect-ratio:4/3;}
+.garage-photo.g-hero{grid-column:1/-1;aspect-ratio:16/10;}
+.garage-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s var(--ease);}
+.garage-photo:hover img{transform:scale(1.03);}
+.garage-photo::before{content:"";position:absolute;left:0;right:0;bottom:0;height:46%;z-index:1;
+  background:linear-gradient(to top, rgba(13,13,13,.65) 0%, transparent 100%);pointer-events:none;}
+.garage-photo::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--red);
+  transition:width .4s var(--ease);z-index:2;}
+.garage-photo:hover::after{width:100%;}
+.garage-photo-tag{position:absolute;left:14px;bottom:12px;z-index:2;font-family:'JetBrains Mono',monospace;
+  font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white);text-shadow:0 1px 6px rgba(13,13,13,.9);}
+
+.garage-video{grid-column:2;grid-row:1/3;position:relative;border:1px solid var(--line);background:var(--graphite-2);
+  overflow:hidden;min-height:560px;}
+.garage-video-media{position:absolute;inset:0;}
+.garage-video-media video{width:100%;height:100%;object-fit:cover;display:block;}
+.garage-video-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;transition:opacity .4s var(--ease);
+  background:linear-gradient(180deg, rgba(13,13,13,.45) 0%, rgba(13,13,13,.05) 30%, rgba(13,13,13,.15) 60%, rgba(13,13,13,.6) 100%);}
+.garage-video-label{position:absolute;top:26px;left:26px;z-index:3;font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--gray);display:flex;flex-direction:column;gap:8px;pointer-events:none;
+  transition:opacity .3s;}
+.garage-video-label b{color:var(--white);font-family:'Oswald',sans-serif;font-weight:600;font-size:1rem;letter-spacing:.04em;text-transform:none;}
+.garage-video-duration{position:absolute;top:26px;right:26px;z-index:3;font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  letter-spacing:.1em;color:var(--gray);background:rgba(13,13,13,.5);padding:5px 10px;opacity:0;transition:opacity .3s;}
+.garage-video-duration.is-ready{opacity:1;}
+.garage-video-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;width:80px;height:80px;border-radius:50%;
+  background:var(--red);border:0;color:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:transform .3s var(--ease), background .25s, opacity .3s;}
+.garage-video-btn:hover{transform:translate(-50%,-50%) scale(1.08);background:var(--red-dark);}
+.garage-video-btn svg{width:26px;height:26px;margin-left:3px;}
+.garage-video-cta{position:absolute;left:26px;bottom:26px;z-index:3;font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--white);display:flex;align-items:center;gap:10px;
+  pointer-events:none;transition:opacity .3s;}
+.garage-video-cta::before{content:"";width:22px;height:1px;background:var(--red);display:inline-block;}
+.garage-video.is-playing .garage-video-btn,.garage-video.is-playing .garage-video-cta,
+.garage-video.is-playing .garage-video-label{opacity:0;pointer-events:none;}
+.garage-video.is-playing .garage-video-scrim{opacity:0;}
+.garage-video-error-msg{position:absolute;inset:0;z-index:3;display:none;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--gray);text-align:center;padding:0 30px;line-height:1.6;}
+.garage-video.video-error .garage-video-error-msg{display:flex;}
+.garage-video.video-error .garage-video-btn,.garage-video.video-error .garage-video-media,
+.garage-video.video-error .garage-video-cta{display:none;}
+
+@media(max-width:1000px){
+  .garage-compose{grid-template-columns:1fr;grid-template-rows:auto auto auto;row-gap:36px;}
+  .garage-intro{grid-column:1;grid-row:1;max-width:none;}
+  .garage-video{grid-column:1;grid-row:2;min-height:0;aspect-ratio:16/10;}
+  .garage-grid{grid-column:1;grid-row:3;}
+}
+@media(max-width:560px){
+  .garage-grid{gap:12px;}
+  .garage-video-btn{width:64px;height:64px;}
+  .garage-video-label,.garage-video-duration,.garage-video-cta{font-size:.62rem;}
+}
+
+/* =========================================================
+   TRABALHOS — interactive before/after slider
+   ========================================================= */
+.trabalhos-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.work-card.featured{grid-column:1/-1;}
+@media(max-width:860px){.trabalhos-grid{grid-template-columns:1fr;}}
+.work-card{border:1px solid var(--line);background:var(--black);}
+
+.before-after{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;touch-action:pan-y;cursor:ew-resize;user-select:none;}
+.work-card.featured .before-after{aspect-ratio:21/9;}
+.ba-media{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.ba-before{background:repeating-linear-gradient(135deg, #161616, #161616 10px, #1c1c1c 10px, #1c1c1c 20px);filter:grayscale(.4) brightness(.85);}
+.ba-after{background:repeating-linear-gradient(135deg, #1a1010, #1a1010 10px, #241414 10px, #241414 20px);
+  clip-path:inset(0 0 0 50%);will-change:clip-path;}
+.ba-media span{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);}
+.ba-tag{position:absolute;top:16px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--white);background:rgba(13,13,13,.55);padding:6px 10px;z-index:2;pointer-events:none;}
+.ba-tag-before{left:16px;}
+.ba-tag-after{right:16px;}
+.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:0;display:flex;align-items:center;justify-content:center;
+  transform:translateX(-50%);z-index:3;cursor:ew-resize;}
+.ba-handle::before{content:"";position:absolute;top:0;bottom:0;left:0;width:1px;background:var(--red);
+  box-shadow:0 0 14px rgba(196,30,30,.7);}
+.ba-handle-icon{width:44px;height:44px;border-radius:50%;background:var(--red);color:var(--white);display:flex;
+  align-items:center;justify-content:center;font-size:1rem;letter-spacing:0;box-shadow:0 4px 18px rgba(0,0,0,.4);
+  transition:transform .25s var(--ease);}
+.before-after:hover .ba-handle-icon{transform:scale(1.1);}
+.before-after.dragging .ba-handle-icon{transform:scale(1.15);}
+.ba-handle-icon svg{width:20px;height:20px;}
+.before-after:not(.interacted) .ba-handle-icon{animation:baPulse 2.4s ease-in-out infinite;}
+@keyframes baPulse{0%,100%{box-shadow:0 4px 18px rgba(0,0,0,.4),0 0 0 0 rgba(196,30,30,.5);}50%{box-shadow:0 4px 18px rgba(0,0,0,.4),0 0 0 14px rgba(196,30,30,0);}}
+
+.work-caption{padding:22px 24px 26px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;align-items:baseline;}
+.work-caption b{font-family:'Oswald',sans-serif;font-size:1.05rem;letter-spacing:.02em;text-transform:uppercase;}
+.work-caption p{color:var(--gray);font-size:.85rem;width:100%;order:3;margin-top:2px;}
+.work-cat{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);}
+
+/* =========================================================
+   LOCALIZAÇÃO — map + overlaid panel
+   ========================================================= */
+.location-compose{position:relative;z-index:2;min-height:640px;border:1px solid var(--line);}
+.location-map{position:absolute;inset:0;}
+.location-map iframe{width:100%;height:100%;border:0;filter:grayscale(1) invert(92%) contrast(88%) brightness(94%);}
+.location-panel{position:relative;z-index:2;max-width:440px;margin:48px;padding:44px 40px;
+  background:rgba(13,13,13,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-left:2px solid var(--red);}
+.location-panel h2{font-size:clamp(2rem,3.6vw,2.8rem);margin:14px 0 30px;}
+.location-detail{margin-bottom:24px;}
+.location-detail .label{display:block;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--red);margin-bottom:8px;}
+.location-detail p{color:var(--gray);font-weight:300;line-height:1.6;font-size:1rem;}
+.location-actions{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:30px;}
+@media(max-width:860px){
+  .location-compose{min-height:auto;display:flex;flex-direction:column;}
+  .location-map{position:relative;height:340px;}
+  .location-panel{margin:0;max-width:none;border-left:0;border-top:2px solid var(--red);backdrop-filter:none;background:var(--graphite);}
+}
+
+/* =========================================================
+   CTA FINAL
+   ========================================================= */
+.cta-band{background:radial-gradient(ellipse 120% 100% at 25% 0%, var(--red) 0%, var(--red-dark) 100%);
+  color:var(--black);padding:130px 6vw;text-align:center;position:relative;overflow:hidden;}
+.cta-band .section-fade.top{background:linear-gradient(to bottom, var(--black), var(--red));}
+.cta-band .section-fade.bottom{background:linear-gradient(to bottom, var(--red-dark), var(--black));}
+.cta-watermark{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:'Oswald',sans-serif;
+  font-weight:700;font-size:min(46vw,620px);color:rgba(13,13,13,.06);letter-spacing:.02em;pointer-events:none;
+  white-space:nowrap;line-height:1;z-index:0;}
+.cta-inner{position:relative;z-index:2;max-width:760px;margin:0 auto;}
+.cta-band .eyebrow{color:rgba(13,13,13,.6);justify-content:center;}
+.cta-band .eyebrow::before{background:var(--black);}
+.cta-band h2{color:var(--black);font-size:clamp(2.2rem,5.4vw,3.8rem);margin:18px 0 18px;}
+.cta-band p{font-weight:400;color:rgba(13,13,13,.75);margin-bottom:36px;font-size:1.05rem;}
+.btn-dark{background:var(--black);color:var(--white);padding:18px 40px;font-family:'Oswald',sans-serif;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;font-size:.92rem;display:inline-block;transition:transform .25s var(--ease), background .25s;}
+.btn-dark:hover{transform:translateY(-2px);background:var(--graphite);}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+footer{padding:60px 6vw 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;
+  font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--gray);border-top:1px solid var(--line);}
+footer .logo-mark{margin-bottom:8px;font-family:'Oswald',sans-serif;font-weight:600;font-size:1.15rem;letter-spacing:.06em;color:var(--white);}
+footer .foot-links{display:flex;gap:22px;}
+footer .foot-links a{opacity:.7;transition:opacity .2s;}
+footer .foot-links a:hover{opacity:1;color:var(--red);}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  .scrub-scroll{height:100svh;}
+  .scrub{position:relative;}
+  .cue-line::after,.cue-fill{transition:none;}
+  [data-reveal]{opacity:1 !important;transform:none !important;transition:none !important;}
+  .ba-handle-icon{animation:none !important;}
+  .cursor-dot,.cursor-ring{display:none !important;}
+  .phase-block{transition:none !important;}
+  .process-step,.service-card,.work-card{transition:none !important;}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav id="siteNav">
+  <a href="#hero" class="logo-mark" aria-label="SF Motos — início">
+    <img src="imgs/logo-sf.png" alt="" class="logo-mark-img" width="38" height="38" decoding="async">
+    SF<span>·</span>MOTOS
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navPanel" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navPanel">
+    <a href="#about" data-nav-link>Oficina</a>
+    <a href="#process" data-nav-link>Processos</a>
+    <a href="#services" data-nav-link>Serviços</a>
+    <a href="#trabalhos" data-nav-link>Trabalhos</a>
+    <a href="#location" data-nav-link>Localização</a>
+    <a href="#contact" class="nav-cta" data-nav-link>Agendar revisão</a>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO — SF MOTOS  →  PRECISÃO DE PISTA NO DIA A DIA
+     scroll-scrubbed video: video/moto.mp4
+     ============================================================ -->
+<div class="scrub-scroll" id="heroScroll">
+  <section class="scrub" id="hero">
+    <div class="scrub-video-wrap" id="heroVideoWrap">
+      <video id="heroVideo" muted playsinline preload="none" aria-hidden="true"></video>
+      <canvas id="heroCanvas" aria-hidden="true"></canvas>
+    </div>
+    <div class="scrub-vignette"></div>
+    <div class="scrub-scrim"></div>
+    <div class="scrub-grain"></div>
+    <div class="scrub-endfade" id="heroEndFade"></div>
+    <span id="about" class="phase-anchor"></span>
+
+    <div class="hero-text-layer">
+      <div class="scrub-content phase-block is-active" id="heroPhase">
+        <div class="eyebrow">Oficina de alta performance em Resende, RJ</div>
+        <h1 class="title">SF<br><span class="accent">MOTOS</span></h1>
+        <p class="hero-tagline">Manutenção · Performance · Customização</p>
+        <div class="scrub-actions">
+          <a href="#contact" class="btn-primary">Agendar revisão</a>
+          <a href="#location" class="btn-ghost">Como chegar →</a>
+        </div>
+      </div>
+
+      <div class="scrub-content phase-block" id="historiaPhase">
+        <span class="eyebrow">A oficina</span>
+        <h2 style="margin-top:14px;">Precisão de pista<br><span class="accent">no dia a dia</span></h2>
+        <p class="scrub-sub" style="max-width:560px;">Fundada em 2026, a SF Motos Alta Performance nasceu com um objetivo claro: atender motos de alta cilindrada e alto padrão em Resende com a tecnologia e o rigor técnico que esse tipo de máquina exige.</p>
+        <p class="scrub-sub" style="max-width:560px;">Trabalhamos com honestidade e transparência em cada orçamento, comprometidos com o cliente do início ao fim — é isso que nos coloca como referência em oficina de moto de alta performance na cidade.</p>
+        <div class="stat-row">
+          <div class="stat"><b>2026</b><span>Ano de fundação</span></div>
+          <div class="stat"><b>5.0</b><span>Avaliação média</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-cue" id="heroCue">
+      <span id="heroCueLabel">Scroll to explore</span>
+      <span class="cue-line"><i class="cue-fill" id="heroCueFill"></i></span>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     PROCESSOS — sem vídeo, timeline editorial
+     ============================================================ -->
+<section class="section" id="process">
+  <div class="tech-corner tl"></div><div class="tech-corner tr"></div>
+  <div class="section-head">
+    <h2>Processos</h2>
+    <span class="eyebrow">Do check-in à entrega</span>
+  </div>
+  <div class="process-timeline" id="processTimeline">
+    <div class="timeline-track"><i class="timeline-fill" id="timelineFill"></i></div>
+
+    <div class="process-step" data-reveal style="--d:0ms">
+      <span class="step-num">01</span>
+      <div class="step-body"><h3>Recepção</h3><p>Anotamos o histórico e o que você percebeu de diferente na moto.</p></div>
+    </div>
+    <div class="process-step" data-reveal style="--d:80ms">
+      <span class="step-num">02</span>
+      <div class="step-body"><h3>Diagnóstico</h3><p>Inspeção técnica completa antes de qualquer orçamento fechado.</p></div>
+    </div>
+    <div class="process-step" data-reveal style="--d:160ms">
+      <span class="step-num">03</span>
+      <div class="step-body"><h3>Execução</h3><p>Serviço feito com peças certas e prazo combinado.</p></div>
+    </div>
+    <div class="process-step" data-reveal style="--d:240ms">
+      <span class="step-num">04</span>
+      <div class="step-body"><h3>Entrega</h3><p>Teste final e explicação do que foi feito, sem letra miúda.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECOND VIDEO — PRECISÃO QUE SE NOTA  →  SERVIÇOS
+     scroll-scrubbed video: video/motor.mp4
+     ============================================================ -->
+<div class="scrub-scroll short" id="motorScroll">
+  <section class="scrub" id="motor">
+    <div class="scrub-video-wrap" id="motorVideoWrap">
+      <video id="motorVideo" muted playsinline preload="none" aria-hidden="true"></video>
+      <canvas id="motorCanvas" aria-hidden="true"></canvas>
+    </div>
+    <div class="scrub-vignette"></div>
+    <div class="scrub-scrim from-right"></div>
+    <div class="scrub-grain"></div>
+
+    <div class="hero-text-layer">
+      <div class="scrub-content align-right phase-block is-active" id="motorPhaseA">
+        <div class="eyebrow">Diagnóstico de verdade</div>
+        <h2>Precisão que<br><span class="accent">se nota</span></h2>
+        <p class="scrub-sub">Vamos a fundo em cada detalhe do motor pra encontrar a causa real e dar a tratativa certa. Nem sempre é preciso desmontar tudo — mas vamos até onde for necessário.</p>
+        <div class="scrub-actions">
+          <a href="#contact" class="btn-primary">Falar com a oficina</a>
+        </div>
+      </div>
+
+      <div class="scrub-content align-right phase-block" id="motorPhaseB">
+        <span class="eyebrow">O que fazemos</span>
+        <h2 class="reveal-word" style="margin-top:14px;">Serviços</h2>
+        <a href="#services" class="reveal-hint">Ver todos ↓</a>
+      </div>
+    </div>
+
+    <div class="scroll-cue right" id="motorCue">
+      <span>Scroll</span>
+      <span class="cue-line"><i class="cue-fill" id="motorCueFill"></i></span>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     SERVIÇOS
+     ============================================================ -->
+<section class="section" id="services">
+  <div class="section-head">
+    <h2>Serviços</h2>
+    <span class="eyebrow">Diagnóstico incluso em todos</span>
+  </div>
+  <div class="services-grid" id="servicesGrid">
+    <div class="service-card featured">
+      <span class="num-bg">02</span>
+      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span>
+      <span class="num">02</span>
+      <h3>Motor &amp; performance</h3>
+      <p>Retífica, upgrade de potência e tuning.</p>
+      <div class="service-seal">
+        <img src="imgs/selo-texa.png" alt="Selo TEXA — scanner de diagnóstico" loading="lazy" decoding="async" width="56" height="56">
+        <div class="service-seal-text">
+          <b>Scanner TEXA de alta eficiência</b>
+          <span>Único em Resende com essa tecnologia</span>
+        </div>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="num-bg">01</span>
+      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12h16M4 12a2 2 0 100-4 2 2 0 000 4zM4 12a2 2 0 110 4 2 2 0 010-4zM20 12a2 2 0 100-4 2 2 0 000 4zM20 12a2 2 0 110 4 2 2 0 010-4z"/></svg></span>
+      <span class="num">01</span>
+      <h3>Revisão geral</h3>
+      <p>Check-up completo de motor, freios e suspensão.</p>
+    </div>
+    <div class="service-card">
+      <span class="num-bg">03</span>
+      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 20V10M6 10l6-6 6 6M6 10h12M18 10v10"/></svg></span>
+      <span class="num">03</span>
+      <h3>Suspensão</h3>
+      <p>Regulagem e setup para uso urbano ou pista.</p>
+    </div>
+    <div class="service-card">
+      <span class="num-bg">04</span>
+      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></span>
+      <span class="num">04</span>
+      <h3>Elétrica</h3>
+      <p>Diagnóstico de injeção eletrônica e fiação.</p>
+    </div>
+    <div class="service-card">
+      <span class="num-bg">05</span>
+      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 18l6-12h4l6 12M8 14h8"/></svg></span>
+      <span class="num">05</span>
+      <h3>Customização</h3>
+      <p>Escapamento, visual e preparação sob medida.</p>
+    </div>
+    <div class="service-card">
+      <span class="num-bg">06</span>
+      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2.4"/></svg></span>
+      <span class="num">06</span>
+      <h3>Pneus &amp; rodas</h3>
+      <p>Balanceamento, alinhamento e troca.</p>
+    </div>
+    <div class="service-card">
+      <span class="num-bg">07</span>
+      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 12h13M12 6l6 6-6 6"/></svg></span>
+      <span class="num">07</span>
+      <h3>Pré-viagem</h3>
+      <p>Preparação completa pra rodar longas distâncias.</p>
+    </div>
+    <div class="service-card wide">
+      <span class="num-bg">08</span>
+      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 13l2-6h10l2 6M3 13h14M3 13v4h2M17 13v4h2"/><circle cx="7" cy="18" r="1.4"/><circle cx="16" cy="18" r="1.4"/></svg></span>
+      <span class="num">08</span>
+      <h3>Socorro &amp; guincho</h3>
+      <p>Atendimento de emergência na região.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EXPERIÊNCIA DA OFICINA — "por trás da performance"
+     editorial photo wall + vídeo grande (transição SERVIÇOS → TRABALHOS)
+     ============================================================ -->
+<section class="section tone-graphite" id="experience">
+  <div class="section-fade top"></div>
+  <div class="section-fade bottom"></div>
+
+  <div class="garage-compose">
+    <div class="garage-intro" data-reveal>
+      <span class="eyebrow">SF Motos / Garage</span>
+      <h2 class="garage-title">Por trás da<br><span class="accent">performance</span></h2>
+      <p class="garage-sub">Motos, ferramentas e gente de verdade — o dia a dia da SF Motos, direto do chão de oficina.</p>
+    </div>
+
+    <div class="garage-video" id="garageVideoWrap" data-reveal style="--d:120ms">
+      <div class="garage-video-media">
+        <video id="garageVideoEl" muted playsinline preload="metadata" aria-label="Vídeo mostrando o dia a dia da oficina SF Motos"></video>
+      </div>
+      <div class="garage-video-scrim"></div>
+      <div class="garage-video-label">
+        <span>SF Motos / Garage</span>
+        <b>Oficina em movimento</b>
+      </div>
+      <span class="garage-video-duration" id="garageVideoDuration"></span>
+      <button class="garage-video-btn" id="garageVideoBtn" type="button" aria-label="Reproduzir vídeo da oficina">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <span class="garage-video-cta">Assista ao vídeo</span>
+      <div class="garage-video-error-msg">Vídeo indisponível no momento.<br>Fale com a gente pelo WhatsApp para conhecer a oficina.</div>
+    </div>
+
+    <div class="garage-grid">
+      <figure class="garage-photo g-hero" data-reveal style="--d:80ms">
+        <img src="imgs/img1_evento.jpeg" alt="Evento SF Motos — motos e clientes na oficina" loading="lazy" decoding="async">
+        <span class="garage-photo-tag">01 / Evento</span>
+      </figure>
+      <figure class="garage-photo" data-reveal style="--d:160ms">
+        <img src="imgs/img2_evento.jpeg" alt="Evento SF Motos — bastidores da oficina" loading="lazy" decoding="async">
+        <span class="garage-photo-tag">02 / Evento</span>
+      </figure>
+      <figure class="garage-photo" data-reveal style="--d:220ms">
+        <img src="imgs/img3_evento.jpeg" alt="Evento SF Motos — movimento na oficina" loading="lazy" decoding="async">
+        <span class="garage-photo-tag">03 / Evento</span>
+      </figure>
+      <figure class="garage-photo" data-reveal style="--d:280ms">
+        <img src="imgs/img4_evento.jpeg" alt="Evento SF Motos — detalhes de motos" loading="lazy" decoding="async">
+        <span class="garage-photo-tag">04 / Evento</span>
+      </figure>
+      <figure class="garage-photo" data-reveal style="--d:340ms">
+        <img src="imgs/img5_evento.jpeg" alt="Evento SF Motos — comunidade e motos" loading="lazy" decoding="async">
+        <span class="garage-photo-tag">05 / Evento</span>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRABALHOS — antes / depois (slider interativo)
+     ============================================================ -->
+<section class="section tone-graphite" id="trabalhos">
+  <div class="section-fade top"></div>
+  <div class="section-fade bottom"></div>
+  <div class="section-head">
+    <h2>Trabalhos</h2>
+    <span class="eyebrow">Antes / depois</span>
+  </div>
+  <div class="trabalhos-grid">
+
+    <article class="work-card featured" data-reveal style="--d:0ms">
+      <div class="before-after" data-before-after>
+        <div class="ba-media ba-before"><span>Antes</span></div>
+        <div class="ba-media ba-after"><span>Depois</span></div>
+        <span class="ba-tag ba-tag-before">Antes</span>
+        <span class="ba-tag ba-tag-after">Depois</span>
+        <div class="ba-handle" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"
+          aria-label="Arraste para comparar antes e depois — Placeholder 01">
+          <span class="ba-handle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></span>
+        </div>
+      </div>
+      <div class="work-caption">
+        <b>Placeholder 01</b>
+        <span class="work-cat">Categoria — a definir</span>
+        <p>Substituir por foto real do trabalho</p>
+      </div>
+    </article>
+
+    <article class="work-card" data-reveal style="--d:80ms">
+      <div class="before-after" data-before-after>
+        <div class="ba-media ba-before"><span>Antes</span></div>
+        <div class="ba-media ba-after"><span>Depois</span></div>
+        <span class="ba-tag ba-tag-before">Antes</span>
+        <span class="ba-tag ba-tag-after">Depois</span>
+        <div class="ba-handle" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"
+          aria-label="Arraste para comparar antes e depois — Placeholder 02">
+          <span class="ba-handle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></span>
+        </div>
+      </div>
+      <div class="work-caption">
+        <b>Placeholder 02</b>
+        <span class="work-cat">Categoria — a definir</span>
+        <p>Substituir por foto real do trabalho</p>
+      </div>
+    </article>
+
+    <article class="work-card" data-reveal style="--d:160ms">
+      <div class="before-after" data-before-after>
+        <div class="ba-media ba-before"><span>Antes</span></div>
+        <div class="ba-media ba-after"><span>Depois</span></div>
+        <span class="ba-tag ba-tag-before">Antes</span>
+        <span class="ba-tag ba-tag-after">Depois</span>
+        <div class="ba-handle" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"
+          aria-label="Arraste para comparar antes e depois — Placeholder 03">
+          <span class="ba-handle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></span>
+        </div>
+      </div>
+      <div class="work-caption">
+        <b>Placeholder 03</b>
+        <span class="work-cat">Categoria — a definir</span>
+        <p>Substituir por foto real do trabalho</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     LOCALIZAÇÃO
+     ============================================================ -->
+<section class="section" id="location">
+  <div class="section-head">
+    <h2>Localização</h2>
+    <span class="eyebrow">Seg — Sáb · 08h às 18h</span>
+  </div>
+  <div class="location-compose">
+    <div class="location-map">
+      <iframe
+        title="Localização da SF Motos"
+        src="https://www.google.com/maps?q=R.+Dalva+Menandro%2C+34+-+Comercial%2C+Resende+-+RJ%2C+27541-180&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+    <div class="location-panel">
+      <span class="eyebrow">Onde estamos</span>
+      <h2>Venha ver de<br>perto o trabalho</h2>
+      <div class="location-detail">
+        <span class="label">Endereço</span>
+        <p>R. Dalva Menandro, 34<br>Comercial, Resende — RJ</p>
+      </div>
+      <div class="location-detail">
+        <span class="label">Horário</span>
+        <p>Seg — Sáb<br>08h às 18h</p>
+      </div>
+      <div class="location-actions">
+        <a href="https://www.google.com/maps/dir/?api=1&destination=R.+Dalva+Menandro%2C+34+-+Comercial%2C+Resende+-+RJ%2C+27541-180" target="_blank" rel="noreferrer" class="btn-ghost">Como chegar →</a>
+        <a href="#" class="btn-primary">Chamar no WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA FINAL
+     ============================================================ -->
+<section class="cta-band" id="contact">
+  <div class="section-fade top"></div>
+  <div class="section-fade bottom"></div>
+  <span class="cta-watermark" aria-hidden="true">SF</span>
+  <div class="cta-inner">
+    <span class="eyebrow">Fale com a oficina</span>
+    <h2>Sua moto merece<br>manutenção de verdade</h2>
+    <p>Fale com a oficina agora pelo WhatsApp</p>
+    <a href="#" class="btn-dark">Chamar no WhatsApp</a>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div>
+    <div class="logo-mark">
+      <img src="imgs/logo-sf.png" alt="" class="logo-mark-img" width="38" height="38" loading="lazy" decoding="async">
+      SF<span style="color:var(--red)">·</span>MOTOS
+    </div>
+    <div>Resende, RJ</div>
+  </div>
+  <div class="foot-links">
+    <a href="#about">Oficina</a>
+    <a href="#services">Serviços</a>
+    <a href="#location">Localização</a>
+  </div>
+  <div>Seg — Sáb · 08h às 18h</div>
+  <div>&copy; <span id="footYear"></span> SF Motos Alta Performance</div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+
+  /* ---------------------------------------------------------
+     UTIL
+     --------------------------------------------------------- */
+  function clamp(v,min,max){ return Math.min(max, Math.max(min, v)); }
+  function smoothstep(a,b,x){
+    var t = clamp((x-a)/(b-a || 1), 0, 1);
+    return t*t*(3-2*t);
+  }
+  document.getElementById('footYear').textContent = new Date().getFullYear();
+
+  /* ---------------------------------------------------------
+     NAV — scrolled state + mobile menu
+     --------------------------------------------------------- */
+  var nav = document.getElementById('siteNav');
+  var navToggle = document.getElementById('navToggle');
+  var navTicking = false;
+  function onNavScroll(){
+    navTicking = false;
+    nav.classList.toggle('is-scrolled', window.scrollY > 40);
+  }
+  window.addEventListener('scroll', function(){
+    if(!navTicking){ navTicking = true; requestAnimationFrame(onNavScroll); }
+  }, {passive:true});
+  onNavScroll();
+
+  navToggle.addEventListener('click', function(){
+    var open = document.documentElement.classList.toggle('nav-open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.querySelectorAll('[data-nav-link]').forEach(function(a){
+    a.addEventListener('click', function(){
+      document.documentElement.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded','false');
+    });
+  });
+
+  /* ---------------------------------------------------------
+     CUSTOM CURSOR (desktop, fine pointer, motion allowed)
+     --------------------------------------------------------- */
+  if (hasFinePointer && !prefersReduced){
+    document.documentElement.classList.add('has-cursor');
+    var dot = document.getElementById('cursorDot');
+    var ring = document.getElementById('cursorRing');
+    var mx=0,my=0, rx=0, ry=0;
+    /* pointermove (not mousemove) — mousemove is suppressed by browsers while
+       a pointer is captured (e.g. dragging the before/after handle), which
+       would otherwise freeze the custom cursor mid-drag. */
+    window.addEventListener('pointermove', function(e){
+      mx = e.clientX; my = e.clientY;
+      dot.style.transform = 'translate3d('+mx+'px,'+my+'px,0) translate(-50%,-50%)';
+    }, {passive:true});
+    function ringLoop(){
+      rx += (mx-rx)*0.18; ry += (my-ry)*0.18;
+      ring.style.transform = 'translate3d('+rx+'px,'+ry+'px,0) translate(-50%,-50%)';
+      requestAnimationFrame(ringLoop);
+    }
+    ringLoop();
+    var hoverTargets = 'a, button, .service-card, .work-card, .process-step, .garage-photo, video';
+    document.addEventListener('pointerover', function(e){
+      if(e.target.closest && e.target.closest('[data-before-after]')) return;
+      if(e.target.closest && e.target.closest(hoverTargets)) ring.classList.add('cursor-hover');
+    });
+    document.addEventListener('pointerout', function(e){
+      if(e.target.closest && e.target.closest(hoverTargets)) ring.classList.remove('cursor-hover');
+    });
+    document.querySelectorAll('[data-before-after]').forEach(function(el){
+      el.addEventListener('pointerenter', function(){ ring.classList.add('cursor-drag'); });
+      el.addEventListener('pointerleave', function(){ ring.classList.remove('cursor-drag'); });
+    });
+  }
+
+  /* ---------------------------------------------------------
+     SCROLL REVEAL — processos / serviços / trabalhos
+     --------------------------------------------------------- */
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if ('IntersectionObserver' in window){
+    var revealIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          revealIO.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.2, rootMargin:'0px 0px -8% 0px'});
+    revealEls.forEach(function(el){ revealIO.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in-view'); });
+  }
+
+  /* process step hover / in-view accent (also triggers on scroll reveal) */
+  document.querySelectorAll('.process-step').forEach(function(step){
+    if ('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting) step.classList.add('in-view'); });
+      }, {threshold:.5});
+      io.observe(step);
+    }
+  });
+
+  /* process timeline red progress line */
+  var timelineFill = document.getElementById('timelineFill');
+  var processSection = document.getElementById('process');
+  var timelineTicking = false;
+  function updateTimeline(){
+    timelineTicking = false;
+    var rect = processSection.getBoundingClientRect();
+    var vh = window.innerHeight;
+    var total = rect.height + vh*.6;
+    var scrolled = vh*.8 - rect.top;
+    var p = clamp(scrolled/total, 0, 1);
+    timelineFill.style.transform = 'scaleY('+p+')';
+  }
+  window.addEventListener('scroll', function(){
+    if(!timelineTicking){ timelineTicking = true; requestAnimationFrame(updateTimeline); }
+  }, {passive:true});
+  window.addEventListener('resize', updateTimeline);
+  updateTimeline();
+
+  /* ---------------------------------------------------------
+     VIDEO SCROLL-SCRUB CONTROLLER (shared: hero + motor)
+
+     Primary path: the source <video> is decoded ONCE into an array of
+     full-resolution ImageBitmap frames drawn on a <canvas>. Scrubbing then
+     becomes an instant array lookup driven by scroll — no live seeking,
+     so there is no seek/decode latency to stutter on, and frames are drawn
+     at native resolution with no extra filter softening them.
+
+     Fallback path (older/unsupported browsers, or if priming errors out):
+     the previous direct video.currentTime-seek approach, eased toward the
+     scroll position every frame.
+     --------------------------------------------------------- */
+  function crossfade(elA, elB, t, opts){
+    opts = opts || {};
+    var te = smoothstep(0,1,t);
+    var opA = 1-te, opB = te;
+    elA.style.opacity = opA;
+    elA.style.transform = 'translateY('+(-te*26)+'px) scale('+(1+te*0.03)+')';
+    elA.style.filter = 'blur('+(te*10)+'px)';
+    elA.classList.toggle('is-active', opA>0.05);
+    elB.style.opacity = opB;
+    elB.style.transform = 'translateY('+((1-te)*30)+'px) scale('+(1-(1-te)*0.02)+')';
+    elB.style.filter = 'blur('+((1-te)*10)+'px)';
+    elB.style.clipPath = 'inset(0 0 '+((1-te)*22)+'% 0)';
+    elB.classList.toggle('is-active', opB>0.05);
+  }
+
+  function createVideoScrub(cfg){
+    var wrapper = document.getElementById(cfg.scrollId);
+    var videoWrap = document.getElementById(cfg.videoWrapId);
+    var video = document.getElementById(cfg.videoId);
+    var canvas = document.getElementById(cfg.canvasId);
+    if(!wrapper || !video || !canvas) return;
+    var ctx = canvas.getContext('2d', {alpha:false});
+
+    var duration = 0, sourceReady = false, inView = true;
+    var mode = null; /* 'frames' | 'seek' once decided */
+    var frames = null, currentFrameIndex = -1;
+    var targetTime = 0; /* used only by the seek fallback */
+    var lastProgress = 0;
+
+    function progress(){
+      var rect = wrapper.getBoundingClientRect();
+      var total = wrapper.offsetHeight - window.innerHeight;
+      if (total <= 0) return 0;
+      var scrolled = -rect.top;
+      return clamp(scrolled/total, 0, 1);
+    }
+
+    function applyChrome(p){
+      if (cfg.textA && cfg.textB){
+        var t = clamp((p - cfg.fadeStart) / (cfg.fadeEnd - cfg.fadeStart), 0, 1);
+        crossfade(cfg.textA, cfg.textB, t);
+      }
+      if (cfg.cueFill){
+        cfg.cueFill.style.transform = 'scaleY(' + clamp(p / (cfg.cueEnd || .92), 0, 1) + ')';
+      }
+      if (cfg.cue){
+        cfg.cue.style.opacity = 1 - smoothstep(cfg.cueFadeStart || .88, cfg.cueFadeEnd || .98, p);
+      }
+      if (cfg.endFade){
+        cfg.endFade.style.opacity = smoothstep(cfg.endFadeStart || .86, cfg.endFadeEnd || 1, p);
+      }
+    }
+
+    /* ---- canvas (frame-cache) rendering ---- */
+    function drawBitmap(bmp){
+      if (!bmp) return;
+      var W = canvas.clientWidth, H = canvas.clientHeight;
+      if (!W || !H) return;
+      var scale = Math.max(W / bmp.width, H / bmp.height);
+      var dw = bmp.width * scale, dh = bmp.height * scale;
+      ctx.drawImage(bmp, (W - dw) / 2, (H - dh) / 2, dw, dh);
+    }
+    function resizeCanvas(){
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var w = canvas.clientWidth, h = canvas.clientHeight;
+      if (!w || !h) return;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (frames && currentFrameIndex >= 0) drawBitmap(frames[currentFrameIndex]);
+    }
+    function renderFrameForProgress(p){
+      if (!frames || !frames.length) return;
+      var idx = clamp(Math.round(p * (frames.length - 1)), 0, frames.length - 1);
+      if (idx !== currentFrameIndex){
+        currentFrameIndex = idx;
+        drawBitmap(frames[idx]);
+      }
+    }
+
+    /* ---- one-time frame priming ---- */
+    var hasFrameCallback = typeof video.requestVideoFrameCallback === 'function';
+
+    /* Fast path: play the clip through once (muted, sped up) and grab every
+       presented frame via requestVideoFrameCallback. Sequential decode is
+       what a video decoder is built for, so this primes in roughly
+       duration/playbackRate — far quicker than seeking to each timestamp
+       one at a time. Requires requestVideoFrameCallback (Chromium, Safari). */
+    function primeFramesByPlayback(){
+      return new Promise(function(resolve, reject){
+        if (!hasFrameCallback || typeof createImageBitmap !== 'function' || prefersReduced){
+          reject(new Error('playback priming unsupported')); return;
+        }
+        var w = video.videoWidth, h = video.videoHeight;
+        if (!w || !h){ reject(new Error('no dimensions')); return; }
+        var offscreen = document.createElement('canvas');
+        offscreen.width = w; offscreen.height = h;
+        var octx = offscreen.getContext('2d', {alpha:false});
+        var out = [];
+        var finished = false;
+        var maxFrames = (cfg.frameCount || 80) * 3;
+        var timer = setTimeout(finish, cfg.primeTimeout || 9000);
+
+        function capture(){
+          if (finished) return;
+          try { octx.drawImage(video, 0, 0, w, h); } catch(e){ finish(); return; }
+          createImageBitmap(offscreen).then(function(bmp){
+            if (finished) return;
+            out.push(bmp);
+            if (video.ended || out.length >= maxFrames){ finish(); return; }
+            video.requestVideoFrameCallback(capture);
+          }, finish);
+        }
+        function finish(){
+          if (finished) return;
+          finished = true;
+          clearTimeout(timer);
+          video.pause();
+          video.playbackRate = 1;
+          video.removeEventListener('ended', finish);
+          if (out.length < 2){ reject(new Error('too few frames captured')); return; }
+          resolve(out);
+        }
+
+        video.addEventListener('ended', finish);
+        try { video.currentTime = 0; } catch(e){}
+        video.playbackRate = cfg.primeRate || 4;
+        video.requestVideoFrameCallback(capture);
+        var playPromise = video.play();
+        if (playPromise && playPromise.catch) playPromise.catch(finish);
+      });
+    }
+
+    /* Fallback path: seek to N evenly-spaced timestamps and capture each.
+       Slower (every seek pays a decode cost) but works without
+       requestVideoFrameCallback (e.g. Firefox), so it's the correctness net
+       under the fast path above. */
+    function seekTo(t){
+      return new Promise(function(resolve){
+        var settled = false;
+        function done(){
+          if (settled) return;
+          settled = true;
+          video.removeEventListener('seeked', onSeeked);
+          clearTimeout(fallback);
+          resolve();
+        }
+        function onSeeked(){
+          /* 'seeked' fires once the target time is set, but the freshly
+             decoded frame isn't guaranteed to be painted yet — drawing the
+             canvas right here can grab the previous (stale) frame. Race a
+             real "frame presented" signal against two animation-frame ticks
+             (whichever settles first) so we capture the fresh frame without
+             depending on requestVideoFrameCallback actually firing in every
+             environment. */
+          if (hasFrameCallback) video.requestVideoFrameCallback(done);
+          requestAnimationFrame(function(){ requestAnimationFrame(done); });
+        }
+        video.addEventListener('seeked', onSeeked);
+        var fallback = setTimeout(done, 220);
+        try { video.currentTime = t; } catch(e){ done(); }
+      });
+    }
+    function primeFramesBySeeking(){
+      var w = video.videoWidth, h = video.videoHeight;
+      if (!w || !h || typeof createImageBitmap !== 'function' || prefersReduced){
+        return Promise.reject(new Error('frame-cache unsupported'));
+      }
+      var offscreen = document.createElement('canvas');
+      offscreen.width = w; offscreen.height = h;
+      var octx = offscreen.getContext('2d', {alpha:false});
+      var count = cfg.frameCount || 80;
+      var out = new Array(count);
+      var i = 0;
+      function next(){
+        if (i >= count) return Promise.resolve(out);
+        var t = (i / (count - 1)) * Math.max(duration - 0.02, 0);
+        return seekTo(t).then(function(){
+          octx.drawImage(video, 0, 0, w, h);
+          return createImageBitmap(offscreen);
+        }).then(function(bmp){
+          out[i] = bmp;
+          i++;
+          return next();
+        });
+      }
+      var timeout = new Promise(function(_, reject){
+        setTimeout(function(){ reject(new Error('prime timeout')); }, cfg.primeTimeout || 9000);
+      });
+      return Promise.race([next(), timeout]);
+    }
+    function primeFrames(){
+      return primeFramesByPlayback().catch(primeFramesBySeeking);
+    }
+
+    /* ---- fallback: direct video seek, eased toward scroll position ---- */
+    function enableFallback(){
+      mode = 'seek';
+      videoWrap.classList.add('fallback-mode');
+      video.classList.add('is-ready');
+      function raf(){
+        if (sourceReady && inView && !prefersReduced){
+          var cur = video.currentTime;
+          var diff = targetTime - cur;
+          if (Math.abs(diff) > 0.004){
+            video.currentTime = clamp(cur + diff * 0.25, 0, duration);
+          }
+        }
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+    }
+
+    /* ---- boot ---- */
+    video.addEventListener('loadedmetadata', function(){
+      duration = video.duration || 0;
+      sourceReady = isFinite(duration) && duration > 0;
+      if (prefersReduced){
+        video.currentTime = duration * (cfg.reducedFrame || .55);
+        videoWrap.classList.add('fallback-mode');
+        video.classList.add('is-ready');
+        return;
+      }
+      if (!sourceReady) return;
+      primeFrames().then(function(loaded){
+        frames = loaded;
+        mode = 'frames';
+        canvas.classList.add('is-ready');
+        resizeCanvas();
+        renderFrameForProgress(lastProgress);
+      }, function(){
+        enableFallback();
+      });
+    });
+    video.addEventListener('error', function(){
+      videoWrap.classList.add('video-error');
+    });
+
+    window.addEventListener('resize', function(){
+      resizeCanvas();
+      onScroll();
+    });
+    if ('ResizeObserver' in window){
+      new ResizeObserver(resizeCanvas).observe(canvas);
+    }
+
+    var scrollTicking = false;
+    function onScroll(){
+      scrollTicking = false;
+      var p = progress();
+      lastProgress = p;
+      applyChrome(p);
+      if (mode === 'frames') renderFrameForProgress(p);
+      else if (mode === 'seek' && sourceReady) targetTime = p * duration;
+    }
+    window.addEventListener('scroll', function(){
+      if(!scrollTicking){ scrollTicking = true; requestAnimationFrame(onScroll); }
+    }, {passive:true});
+
+    if ('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ inView = e.isIntersecting; });
+      }, {threshold:0});
+      io.observe(wrapper);
+
+      /* lazy-load the source only once the section nears the viewport */
+      var lazyIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (!entry.isIntersecting) return;
+          lazyIO.disconnect();
+          var source = document.createElement('source');
+          source.src = cfg.src;
+          source.type = 'video/mp4';
+          video.appendChild(source);
+          video.load();
+        });
+      }, {rootMargin:'900px 0px 900px 0px'});
+      lazyIO.observe(wrapper);
+    } else {
+      var source = document.createElement('source');
+      source.src = cfg.src;
+      source.type = 'video/mp4';
+      video.appendChild(source);
+      video.load();
+    }
+
+    if (prefersReduced){
+      if (cfg.textA && cfg.textB) crossfade(cfg.textA, cfg.textB, 1);
+      if (cfg.cueFill) cfg.cueFill.style.transform = 'scaleY(1)';
+    } else {
+      onScroll();
+    }
+  }
+
+  createVideoScrub({
+    scrollId:'heroScroll', videoWrapId:'heroVideoWrap', videoId:'heroVideo', canvasId:'heroCanvas',
+    src:'video/moto.mp4', frameCount:90,
+    textA: document.getElementById('heroPhase'), textB: document.getElementById('historiaPhase'),
+    fadeStart:.34, fadeEnd:.5,
+    cue: document.getElementById('heroCue'), cueFill: document.getElementById('heroCueFill'), cueEnd:.5,
+    cueFadeStart:.86, cueFadeEnd:.97,
+    endFade: document.getElementById('heroEndFade'), endFadeStart:.86, endFadeEnd:1,
+    reducedFrame:.55
+  });
+
+  createVideoScrub({
+    scrollId:'motorScroll', videoWrapId:'motorVideoWrap', videoId:'motorVideo', canvasId:'motorCanvas',
+    src:'video/motor.mp4', frameCount:72,
+    textA: document.getElementById('motorPhaseA'), textB: document.getElementById('motorPhaseB'),
+    fadeStart:.55, fadeEnd:.74,
+    cue: document.getElementById('motorCue'), cueFill: document.getElementById('motorCueFill'), cueEnd:.6,
+    cueFadeStart:.82, cueFadeEnd:.95,
+    reducedFrame:.5
+  });
+
+  /* ---------------------------------------------------------
+     GARAGE VIDEO — oficina highlight (click-to-play, lazy, IO)
+     --------------------------------------------------------- */
+  (function(){
+    var wrap = document.getElementById('garageVideoWrap');
+    var video = document.getElementById('garageVideoEl');
+    var btn = document.getElementById('garageVideoBtn');
+    var durationEl = document.getElementById('garageVideoDuration');
+    if (!wrap || !video || !btn) return;
+
+    var sourceLoaded = false;
+    function loadSource(){
+      if (sourceLoaded) return;
+      sourceLoaded = true;
+      var source = document.createElement('source');
+      source.src = 'video/amostração.mp4';
+      source.type = 'video/mp4';
+      video.appendChild(source);
+      video.load();
+    }
+
+    video.addEventListener('loadedmetadata', function(){
+      var d = video.duration;
+      if (isFinite(d) && d > 0 && durationEl){
+        var m = Math.floor(d/60), s = Math.round(d%60);
+        durationEl.textContent = m + ':' + (s<10?'0':'') + s;
+        durationEl.classList.add('is-ready');
+      }
+    });
+    video.addEventListener('error', function(){ wrap.classList.add('video-error'); });
+    video.addEventListener('play', function(){ wrap.classList.add('is-playing'); });
+    video.addEventListener('pause', function(){ wrap.classList.remove('is-playing'); });
+    video.addEventListener('ended', function(){ wrap.classList.remove('is-playing'); });
+
+    btn.addEventListener('click', function(){
+      loadSource();
+      video.muted = false;
+      video.setAttribute('controls','');
+      var p = video.play();
+      if (p && p.catch) p.catch(function(){ video.muted = true; video.play().catch(function(){}); });
+    });
+
+    if ('IntersectionObserver' in window){
+      var lazyIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting){ loadSource(); lazyIO.disconnect(); }
+        });
+      }, {rootMargin:'600px 0px 600px 0px'});
+      lazyIO.observe(wrap);
+
+      var pauseIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (!entry.isIntersecting && !video.paused) video.pause();
+        });
+      }, {threshold:0});
+      pauseIO.observe(wrap);
+    } else {
+      loadSource();
+    }
+  })();
+
+  /* ---------------------------------------------------------
+     BEFORE / AFTER SLIDER — mouse, touch, keyboard
+     --------------------------------------------------------- */
+  function BeforeAfter(el){
+    this.el = el;
+    this.after = el.querySelector('.ba-after');
+    this.handle = el.querySelector('.ba-handle');
+    this.setPercent(50, false);
+    this.bind();
+  }
+  BeforeAfter.prototype.setPercent = function(pct, mark){
+    pct = clamp(pct, 4, 96);
+    this.after.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
+    this.handle.style.left = pct + '%';
+    this.handle.setAttribute('aria-valuenow', Math.round(pct));
+    if (mark) this.el.classList.add('interacted');
+  };
+  BeforeAfter.prototype.posFromEvent = function(e){
+    var rect = this.el.getBoundingClientRect();
+    return ((e.clientX - rect.left) / rect.width) * 100;
+  };
+  BeforeAfter.prototype.bind = function(){
+    var self = this, dragging = false;
+    function start(e){
+      dragging = true;
+      self.el.classList.add('dragging');
+      move(e);
+    }
+    function move(e){
+      if (!dragging) return;
+      self.setPercent(self.posFromEvent(e), true);
+      if (e.cancelable) e.preventDefault();
+    }
+    function end(){
+      dragging = false;
+      self.el.classList.remove('dragging');
+    }
+    /* Pointer Events cover mouse, touch and pen in one unified API —
+       no separate touchstart/touchmove handlers needed (avoids double
+       handling and passive-listener preventDefault warnings on mobile). */
+    self.el.addEventListener('pointerdown', function(e){ self.el.setPointerCapture && self.el.setPointerCapture(e.pointerId); start(e); });
+    self.el.addEventListener('pointermove', move, {passive:false});
+    self.el.addEventListener('pointerup', end);
+    self.el.addEventListener('pointercancel', end);
+    self.handle.addEventListener('keydown', function(e){
+      var cur = parseFloat(self.handle.style.left) || 50;
+      if (e.key === 'ArrowLeft'){ self.setPercent(cur-4, true); e.preventDefault(); }
+      if (e.key === 'ArrowRight'){ self.setPercent(cur+4, true); e.preventDefault(); }
+    });
+  };
+  document.querySelectorAll('[data-before-after]').forEach(function(el){ new BeforeAfter(el); });
+
+})();
+</script>
+</body>
+</html>
