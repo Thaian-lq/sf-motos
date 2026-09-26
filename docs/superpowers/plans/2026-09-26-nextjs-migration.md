@@ -1166,8 +1166,8 @@ export function ScrubVideo(props: ScrubVideoProps) {
 
   return (
     <div className={`scrub-scroll${props.short ? " short" : ""}`} id={props.scrollId} ref={wrapperRef}>
-      <section className="scrub" style={{ height: undefined }}>
-        <div className="scrub-video-wrap" ref={videoWrapRef}>
+      <section className="scrub">
+        <div className="scrub-video-wrap cursor-hover-target" ref={videoWrapRef}>
           <video ref={videoRef} muted playsInline preload="none" aria-hidden="true" />
           <canvas ref={canvasRef} aria-hidden="true" />
         </div>
@@ -1381,7 +1381,7 @@ export function Processes() {
         {STEPS.map((step, i) => (
           <Reveal key={step.num} delayMs={i * 80}>
             <div
-              className="process-step"
+              className="process-step cursor-hover-target"
               ref={(el) => { if (el) stepRefs.current[i] = el; }}
             >
               <span className="step-num">{step.num}</span>
@@ -1625,7 +1625,7 @@ export function Services() {
         {services.map((service) => (
           <div
             key={service.num}
-            className={`service-card${service.featured ? " featured" : ""}${service.wide ? " wide" : ""}`}
+            className={`service-card cursor-hover-target${service.featured ? " featured" : ""}${service.wide ? " wide" : ""}`}
           >
             <span className="num-bg">{service.num}</span>
             <span className="icon" aria-hidden="true">{service.icon}</span>
@@ -1982,7 +1982,7 @@ function BeforeAfterCard({ label, featured, delayMs }: { label: string; featured
   const { containerRef, percent, dragging, interacted, handlers } = useBeforeAfterSlider();
 
   return (
-    <Reveal delayMs={delayMs} className={`work-card${featured ? " featured" : ""}`}>
+    <Reveal delayMs={delayMs} className={`work-card cursor-hover-target${featured ? " featured" : ""}`}>
       <div
         className={`before-after cursor-hover-target${dragging ? " dragging" : ""}${interacted ? " interacted" : ""}`}
         ref={containerRef}
