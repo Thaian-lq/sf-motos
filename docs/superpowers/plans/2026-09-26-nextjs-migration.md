@@ -637,7 +637,43 @@ git commit -m "feat: port custom triangle cursor"
 - Consumes: nenhum hook das tasks anteriores.
 - Produces: `<Nav />`, usado em `app/page.tsx` (Task 18). Aplica `cursor-hover-target` nos links, conforme convenção da Task 6.
 
-- [ ] **Step 1: Criar `styles/nav.css`** (idêntico ao bloco `nav{...}` / `.logo-mark{...}` / `.nav-links{...}` / `.nav-toggle{...}` / media query `@media(max-width:840px)` do arquivo original, incluindo `.logo-mark-img`).
+- [ ] **Step 1: Criar `styles/nav.css`** com o conteúdo exato abaixo (o `index.html` original que continha esse CSS já foi removido do working tree na Task 1 — este é o conteúdo literal a copiar, não uma paráfrase):
+
+```css
+nav{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
+  padding:22px 6vw;z-index:100;transition:background .4s var(--ease), padding .4s var(--ease), border-color .4s var(--ease), backdrop-filter .4s;
+  border-bottom:1px solid transparent;}
+nav.is-scrolled{background:rgba(13,13,13,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  padding:14px 6vw;border-bottom-color:var(--line);}
+.logo-mark{display:flex;align-items:center;gap:10px;font-family:'Oswald',sans-serif;font-weight:600;font-size:1.15rem;letter-spacing:.06em;position:relative;z-index:2;}
+.logo-mark span{color:var(--red);}
+.logo-mark-img{width:38px;height:38px;object-fit:contain;display:block;flex-shrink:0;}
+.nav-links{display:flex;align-items:center;gap:34px;font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;}
+.nav-links a:not(.nav-cta){opacity:.75;transition:opacity .25s;position:relative;}
+.nav-links a:not(.nav-cta):hover{opacity:1;}
+.nav-links a:not(.nav-cta)::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--red);
+  transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease);}
+.nav-links a:not(.nav-cta):hover::after{transform:scaleX(1);}
+.nav-cta{font-family:'Oswald',sans-serif;font-weight:600;background:var(--red);color:var(--white);padding:10px 20px;letter-spacing:.06em;transition:background .25s;}
+.nav-cta:hover{background:var(--red-dark);}
+.nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:0;cursor:pointer;z-index:110;}
+.nav-toggle span{display:block;width:100%;height:1px;background:var(--white);transition:transform .3s var(--ease), opacity .3s var(--ease);}
+html.nav-open .nav-toggle span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+html.nav-open .nav-toggle span:nth-child(2){opacity:0;}
+html.nav-open .nav-toggle span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+
+@media(max-width:840px){
+  .nav-toggle{display:flex;}
+  .nav-links{position:fixed;inset:0;flex-direction:column;justify-content:center;align-items:flex-start;
+    padding:0 8vw;background:rgba(13,13,13,.98);backdrop-filter:blur(14px);gap:26px;
+    transform:translateX(100%);transition:transform .45s var(--ease);font-size:1.3rem;}
+  html.nav-open .nav-links{transform:translateX(0);}
+  .nav-links a{opacity:1 !important;}
+  .nav-cta{margin-top:12px;}
+}
+```
+
+Nota: `.logo-mark` é definido aqui e reaproveitado pelo `Footer` (Task 17), que adiciona só um pequeno override `footer .logo-mark{...}` por cima — é assim que funcionava no CSS original (uma única folha de estilo), e continua funcionando aqui porque `app/globals.css` agrega todos os `styles/*.css` como CSS global.
 
 - [ ] **Step 2: Implementar `components/Nav.tsx`**
 
@@ -765,7 +801,73 @@ export interface ScrubVideoProps {
 
 `<ScrubVideo>` é consumido por `Hero` (Task 9) e `PrecisionVideo` (Task 10), passando `phases` com o conteúdo específico de cada seção.
 
-- [ ] **Step 1: Criar `styles/scrub.css`** — portar verbatim o bloco `SCROLL-SCRUBBED VIDEO SECTIONS` do arquivo original: `.scrub-scroll` (altura `220vh`, `.short` em `280vh` — valor já ajustado nesta conversa), `.scrub`, `.scrub-video-wrap` (+ `canvas`/`video` modes), `.phase-anchor`, `.hero-text-layer`, `.phase-block`, `.scrub-scrim` (+ `.from-right`), `.scrub-vignette`, `.scrub-grain`, `.scrub-endfade`, `.scrub-content` (+ `.align-right`), `h1.title`/`.scrub-content h2` (+ `.accent`), `.hero-tagline`, `.scrub-sub`, `.stat-row`, `.scrub-actions`, `.reveal-word`, `.reveal-hint`, `.scroll-cue` (+ `.right`), `.cue-line`, `.cue-fill`.
+- [ ] **Step 1: Criar `styles/scrub.css`** com o conteúdo exato abaixo (o `index.html` original já foi removido do working tree na Task 1 — este é o conteúdo literal a copiar). Note a regra genérica `.accent{color:var(--red);}` perto do fim: no site original essa cor era aplicada listando manualmente cada seletor consumidor (`h1.title .accent, .scrub-content h2 .accent, .garage-title .accent, .cartao-title .accent`) — aqui ela vira uma única regra genérica por `className="accent"`, o que os componentes das Tasks 9, 11, 13 e 16 já usam. É uma simplificação legítima (remove uma fragilidade de manutenção), não uma mudança visual:
+
+```css
+.scrub-scroll{position:relative;height:220vh;}
+.scrub-scroll.short{height:280vh;}
+.scrub{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;padding:0 6vw;overflow:hidden;background:var(--black);}
+
+.scrub-video-wrap{position:absolute;inset:0;z-index:0;background:linear-gradient(150deg,var(--graphite) 0%,var(--black) 70%);}
+.scrub-video-wrap video,.scrub-video-wrap canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.scrub-video-wrap canvas{opacity:0;transition:opacity .6s ease;}
+.scrub-video-wrap canvas.is-ready{opacity:1;}
+.scrub-video-wrap video{opacity:0;pointer-events:none;}
+.scrub-video-wrap.fallback-mode canvas{display:none;}
+.scrub-video-wrap.fallback-mode video{transition:opacity .6s ease;}
+.scrub-video-wrap.fallback-mode video.is-ready{opacity:1;}
+.scrub-video-wrap.video-error video,.scrub-video-wrap.video-error canvas{display:none;}
+
+.phase-anchor{position:absolute;top:44%;left:0;width:1px;height:1px;}
+
+.hero-text-layer{position:relative;z-index:3;height:100%;display:flex;align-items:center;}
+.hero-text-layer .scrub-content{position:absolute;left:0;max-width:920px;}
+.phase-block{will-change:opacity,transform,filter;pointer-events:none;}
+.phase-block.is-active{pointer-events:auto;}
+
+.scrub-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(to right, rgba(13,13,13,.94) 0%, rgba(13,13,13,.72) 32%, rgba(13,13,13,.28) 58%, transparent 78%);}
+.scrub-scrim.from-right{background:linear-gradient(to left, rgba(13,13,13,.94) 0%, rgba(13,13,13,.72) 32%, rgba(13,13,13,.28) 58%, transparent 78%);}
+.scrub-vignette{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 80% 70% at 60% 50%, transparent 45%, rgba(13,13,13,.85) 100%);}
+.scrub-grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size:180px 180px;}
+.scrub-endfade{position:absolute;inset:0;z-index:2;pointer-events:none;background:var(--black);opacity:0;}
+
+.scrub-content{position:relative;z-index:3;max-width:920px;}
+.scrub-content.align-right{margin-left:auto;text-align:right;}
+.scrub-content .eyebrow{margin-bottom:22px;display:flex;align-items:center;gap:10px;}
+.scrub-content.align-right .eyebrow{justify-content:flex-end;}
+.scrub-content .eyebrow::before{content:"";width:26px;height:1px;background:var(--red);display:inline-block;}
+.scrub-content.align-right .eyebrow::after{content:"";width:26px;height:1px;background:var(--red);display:inline-block;}
+.scrub-content.align-right .eyebrow::before{display:none;}
+
+h1.title,.scrub-content h2{font-size:clamp(3rem,8vw,6.4rem);font-weight:700;margin-bottom:6px;}
+.accent{color:var(--red);}
+.hero-tagline{font-family:'JetBrains Mono',monospace;font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gray);
+  margin:20px 0 38px;}
+.scrub-sub{font-family:'Inter',sans-serif;font-weight:300;font-size:clamp(1rem,1.6vw,1.25rem);color:var(--gray);
+  max-width:520px;margin:22px 0 40px;line-height:1.55;}
+.scrub-content.align-right .scrub-sub{margin-left:auto;}
+.stat-row{display:flex;gap:48px;margin-top:36px;}
+.stat b{font-family:'Oswald',sans-serif;font-size:2.4rem;color:var(--red);display:block;}
+.stat span{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.1em;color:var(--gray);text-transform:uppercase;}
+
+.scrub-actions{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+.scrub-content.align-right .scrub-actions{justify-content:flex-end;}
+
+.reveal-word{font-size:clamp(3.4rem,10vw,8rem);font-weight:700;}
+.reveal-hint{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.15em;color:var(--gray);margin-top:26px;display:inline-block;}
+.reveal-hint:hover{color:var(--white);}
+
+.scroll-cue{position:absolute;bottom:38px;left:6vw;display:flex;align-items:center;gap:14px;z-index:3;
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);
+  transition:opacity .4s ease;}
+.scroll-cue.right{left:auto;right:6vw;flex-direction:row-reverse;}
+.cue-line{width:1px;height:44px;background:rgba(245,245,240,.18);position:relative;overflow:hidden;}
+.cue-fill{position:absolute;left:0;top:0;width:100%;height:100%;background:var(--red);transform:scaleY(0);transform-origin:top;}
+```
 
 - [ ] **Step 2: Implementar `hooks/useScrubVideo.ts`** — porta a função `createVideoScrub` do arquivo original quase 1:1, adaptada para refs em vez de `getElementById`:
 
@@ -1310,7 +1412,30 @@ git commit -m "feat: port Hero section"
 - Consumes: `Reveal` (Task 5).
 - Produces: `<Processes />`, seção `#process`.
 
-- [ ] **Step 1: Criar `styles/processes.css`** — portar verbatim o bloco `PROCESSOS` do arquivo original (`.process-timeline`, `.timeline-track`, `.timeline-fill`, `.process-step`, `.step-num`, `.step-body`).
+- [ ] **Step 1: Criar `styles/processes.css`** com o conteúdo exato abaixo (o `index.html` original já foi removido do working tree na Task 1 — este é o conteúdo literal, não uma paráfrase):
+
+```css
+.process-timeline{position:relative;z-index:2;display:grid;gap:0;max-width:920px;}
+.timeline-track{position:absolute;left:29px;top:10px;bottom:10px;width:1px;background:var(--line-strong);z-index:0;}
+@media(min-width:720px){.timeline-track{left:53px;}}
+.timeline-fill{position:absolute;left:0;top:0;width:100%;height:100%;background:var(--red);transform:scaleY(0);transform-origin:top;
+  transition:transform .1s linear;}
+.process-step{position:relative;z-index:1;display:grid;grid-template-columns:60px 1fr;gap:22px;align-items:start;
+  padding:38px 0;border-bottom:1px solid var(--line);transition:padding-left .35s var(--ease);}
+@media(min-width:720px){.process-step{grid-template-columns:108px 1fr;gap:36px;}}
+.process-step:last-child{border-bottom:0;}
+.process-step:hover{padding-left:14px;}
+.step-num{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2.4rem,4.5vw,3.6rem);color:var(--graphite-2);
+  -webkit-text-stroke:1px var(--line-strong);transition:color .35s, -webkit-text-stroke-color .35s, transform .35s var(--ease);
+  line-height:1;}
+.process-step:hover .step-num,.process-step.in-view .step-num{color:transparent;-webkit-text-stroke-color:var(--red);}
+.process-step:hover .step-num{transform:scale(1.08);}
+.step-body h3{font-size:clamp(1.3rem,2.2vw,1.9rem);margin-bottom:10px;letter-spacing:.02em;position:relative;padding-left:18px;}
+.step-body h3::before{content:"";position:absolute;left:0;top:.35em;width:8px;height:8px;background:var(--graphite-2);
+  transition:background .3s;}
+.process-step:hover .step-body h3::before{background:var(--red);}
+.step-body p{color:var(--gray);font-weight:300;line-height:1.6;font-size:1rem;max-width:560px;padding-left:18px;}
+```
 
 - [ ] **Step 2: Implementar `components/Processes.tsx`** com a lógica do preenchimento vermelho da timeline (porta o listener de scroll `updateTimeline` do arquivo original) e o hover/in-view de cada `step-num` via `IntersectionObserver`:
 
@@ -1495,7 +1620,40 @@ git commit -m "feat: port PrecisionVideo (second scrub video) section"
 **Interfaces:**
 - Produces: `interface Service { num: string; title: string; description: string; icon: ReactNode; featured?: boolean; wide?: boolean; seal?: { image: string; title: string; subtitle: string } }`, `export const services: Service[]` (8 itens) — consumido só por `Services.tsx`.
 
-- [ ] **Step 1: Criar `styles/services.css`** — portar verbatim `.services-grid`, `.service-card` (+ `.featured`, `.wide`, `.num-bg`, `.icon`, `.num`), `.service-seal` (+ `-text`), media queries `@media(max-width:900px)` e `@media(max-width:560px)`.
+- [ ] **Step 1: Criar `styles/services.css`** com o conteúdo exato abaixo:
+
+```css
+.services-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-auto-rows:minmax(210px,auto);gap:1px;background:var(--line);border:1px solid var(--line);}
+.service-card{background:var(--black);padding:34px 30px;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:space-between;transition:background .35s;}
+.service-card:hover{background:var(--graphite-2);}
+.service-card::before{content:"";position:absolute;left:0;top:0;width:2px;height:0;background:var(--red);transition:height .35s var(--ease);}
+.service-card:hover::before{height:100%;}
+.service-card .num-bg{position:absolute;right:18px;top:-6px;font-family:'Oswald',sans-serif;font-weight:700;
+  font-size:clamp(4rem,7vw,6.4rem);line-height:1;color:transparent;-webkit-text-stroke:1px var(--line-strong);
+  transition:-webkit-text-stroke-color .4s;pointer-events:none;}
+.service-card:hover .num-bg{-webkit-text-stroke-color:rgba(196,30,30,.45);}
+.service-card .icon{width:30px;height:30px;color:var(--red);opacity:.9;margin-bottom:auto;}
+.service-card .icon svg{width:100%;height:100%;}
+.service-card .num{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--red);letter-spacing:.1em;margin-bottom:18px;display:block;}
+.service-card h3{font-size:1.18rem;margin-bottom:10px;letter-spacing:.02em;position:relative;z-index:1;}
+.service-card p{color:var(--gray);font-size:.88rem;font-weight:300;line-height:1.55;position:relative;z-index:1;max-width:32ch;}
+.service-card.featured{grid-column:span 2;grid-row:span 2;background:linear-gradient(155deg, rgba(196,30,30,.10), var(--black) 55%);}
+.service-card.featured h3{font-size:clamp(1.5rem,2.4vw,2rem);}
+.service-card.featured .icon{width:42px;height:42px;}
+.service-card.wide{grid-column:span 2;}
+.service-seal{display:flex;align-items:center;gap:14px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line);position:relative;z-index:1;}
+.service-seal img{width:56px;height:56px;border-radius:50%;flex-shrink:0;object-fit:cover;background:var(--graphite-2);}
+.service-seal-text{display:flex;flex-direction:column;gap:3px;}
+.service-seal-text b{font-family:'Oswald',sans-serif;font-weight:600;font-size:.86rem;letter-spacing:.02em;text-transform:uppercase;color:var(--white);}
+.service-seal-text span{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.05em;color:var(--red);text-transform:uppercase;}
+@media(max-width:900px){
+  .services-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .service-card.featured,.service-card.wide{grid-column:1/-1;grid-row:auto;}
+}
+@media(max-width:560px){.services-grid{grid-template-columns:1fr;}}
+```
 
 - [ ] **Step 2: Criar `data/services.tsx`** com os 8 serviços e seus ícones SVG (path data idêntico ao arquivo original):
 
@@ -1674,7 +1832,74 @@ git commit -m "feat: port Services grid with TEXA seal"
 **Interfaces:**
 - Produces: `interface GalleryPhoto { src: string; alt: string; tag: string; size: "hero" | "normal" }`, `export const galleryPhotos: GalleryPhoto[]` (5 itens); `useGarageVideo()` hook para o player play/pause/duração/lazy/pausa-ao-sair-da-viewport.
 
-- [ ] **Step 1: Criar `styles/garage.css`** — portar verbatim o bloco `EXPERIÊNCIA DA OFICINA` (`.garage-compose`, `.garage-intro`, `.garage-title`, `.garage-sub`, `.garage-grid`, `.garage-photo` + `.g-hero`, `.garage-video` + todos os `.garage-video-*`, media queries `@media(max-width:1000px)` e `@media(max-width:560px)`).
+- [ ] **Step 1: Criar `styles/garage.css`** com o conteúdo exato abaixo (a galeria tem só 5 fotos, sem placeholder de foto 6 — reflete o estado atual do site):
+
+```css
+.garage-compose{position:relative;z-index:2;display:grid;
+  grid-template-columns:1fr 1.5fr;grid-template-rows:auto auto;
+  column-gap:56px;row-gap:44px;}
+
+.garage-intro{grid-column:1;grid-row:1;max-width:420px;}
+.garage-intro .eyebrow{margin-bottom:18px;}
+.garage-title{font-size:clamp(2.4rem,4.4vw,3.8rem);margin-bottom:22px;}
+.garage-sub{color:var(--gray);font-weight:300;line-height:1.6;font-size:1rem;max-width:36ch;}
+
+.garage-grid{grid-column:1;grid-row:2;display:grid;grid-template-columns:repeat(2,1fr);gap:18px;align-content:start;}
+.garage-photo{position:relative;overflow:hidden;margin:0;background:var(--graphite);aspect-ratio:4/3;}
+.garage-photo.g-hero{grid-column:1/-1;aspect-ratio:16/10;}
+.garage-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s var(--ease);}
+.garage-photo:hover img{transform:scale(1.03);}
+.garage-photo::before{content:"";position:absolute;left:0;right:0;bottom:0;height:46%;z-index:1;
+  background:linear-gradient(to top, rgba(13,13,13,.65) 0%, transparent 100%);pointer-events:none;}
+.garage-photo::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--red);
+  transition:width .4s var(--ease);z-index:2;}
+.garage-photo:hover::after{width:100%;}
+.garage-photo-tag{position:absolute;left:14px;bottom:12px;z-index:2;font-family:'JetBrains Mono',monospace;
+  font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white);text-shadow:0 1px 6px rgba(13,13,13,.9);}
+
+.garage-video{grid-column:2;grid-row:1/3;position:relative;border:1px solid var(--line);background:var(--graphite-2);
+  overflow:hidden;min-height:560px;}
+.garage-video-media{position:absolute;inset:0;}
+.garage-video-media video{width:100%;height:100%;object-fit:cover;display:block;}
+.garage-video-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;transition:opacity .4s var(--ease);
+  background:linear-gradient(180deg, rgba(13,13,13,.45) 0%, rgba(13,13,13,.05) 30%, rgba(13,13,13,.15) 60%, rgba(13,13,13,.6) 100%);}
+.garage-video-label{position:absolute;top:26px;left:26px;z-index:3;font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--gray);display:flex;flex-direction:column;gap:8px;pointer-events:none;
+  transition:opacity .3s;}
+.garage-video-label b{color:var(--white);font-family:'Oswald',sans-serif;font-weight:600;font-size:1rem;letter-spacing:.04em;text-transform:none;}
+.garage-video-duration{position:absolute;top:26px;right:26px;z-index:3;font-family:'JetBrains Mono',monospace;font-size:.7rem;
+  letter-spacing:.1em;color:var(--gray);background:rgba(13,13,13,.5);padding:5px 10px;opacity:0;transition:opacity .3s;}
+.garage-video-duration.is-ready{opacity:1;}
+.garage-video-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;width:80px;height:80px;border-radius:50%;
+  background:var(--red);border:0;color:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:transform .3s var(--ease), background .25s, opacity .3s;}
+.garage-video-btn:hover{transform:translate(-50%,-50%) scale(1.08);background:var(--red-dark);}
+.garage-video-btn svg{width:26px;height:26px;margin-left:3px;}
+.garage-video-cta{position:absolute;left:26px;bottom:26px;z-index:3;font-family:'JetBrains Mono',monospace;font-size:.72rem;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--white);display:flex;align-items:center;gap:10px;
+  pointer-events:none;transition:opacity .3s;}
+.garage-video-cta::before{content:"";width:22px;height:1px;background:var(--red);display:inline-block;}
+.garage-video.is-playing .garage-video-btn,.garage-video.is-playing .garage-video-cta,
+.garage-video.is-playing .garage-video-label{opacity:0;pointer-events:none;}
+.garage-video.is-playing .garage-video-scrim{opacity:0;}
+.garage-video-error-msg{position:absolute;inset:0;z-index:3;display:none;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--gray);text-align:center;padding:0 30px;line-height:1.6;}
+.garage-video.video-error .garage-video-error-msg{display:flex;}
+.garage-video.video-error .garage-video-btn,.garage-video.video-error .garage-video-media,
+.garage-video.video-error .garage-video-cta{display:none;}
+
+@media(max-width:1000px){
+  .garage-compose{grid-template-columns:1fr;grid-template-rows:auto auto auto;row-gap:36px;}
+  .garage-intro{grid-column:1;grid-row:1;max-width:none;}
+  .garage-video{grid-column:1;grid-row:2;min-height:0;aspect-ratio:16/10;}
+  .garage-grid{grid-column:1;grid-row:3;}
+}
+@media(max-width:560px){
+  .garage-grid{gap:12px;}
+  .garage-video-btn{width:64px;height:64px;}
+  .garage-video-label,.garage-video-duration,.garage-video-cta{font-size:.62rem;}
+}
+```
 
 - [ ] **Step 2: Criar `data/gallery.ts`**
 
@@ -1963,7 +2188,43 @@ export function useBeforeAfterSlider() {
 Run: `npm test`
 Expected: PASS.
 
-- [ ] **Step 5: Criar `styles/trabalhos.css`** — portar verbatim `.trabalhos-grid`, `.work-card`, `.before-after` (+ `.ba-media`, `.ba-before`, `.ba-after`, `.ba-tag*`, `.ba-handle*`), `@keyframes baPulse`, media query `@media(max-width:860px)`.
+- [ ] **Step 5: Criar `styles/trabalhos.css`** com o conteúdo exato abaixo:
+
+```css
+.trabalhos-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.work-card.featured{grid-column:1/-1;}
+@media(max-width:860px){.trabalhos-grid{grid-template-columns:1fr;}}
+.work-card{border:1px solid var(--line);background:var(--black);}
+
+.before-after{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;touch-action:pan-y;cursor:ew-resize;user-select:none;}
+.work-card.featured .before-after{aspect-ratio:21/9;}
+.ba-media{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.ba-before{background:repeating-linear-gradient(135deg, #161616, #161616 10px, #1c1c1c 10px, #1c1c1c 20px);filter:grayscale(.4) brightness(.85);}
+.ba-after{background:repeating-linear-gradient(135deg, #1a1010, #1a1010 10px, #241414 10px, #241414 20px);
+  clip-path:inset(0 0 0 50%);will-change:clip-path;}
+.ba-media span{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);}
+.ba-tag{position:absolute;top:16px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--white);background:rgba(13,13,13,.55);padding:6px 10px;z-index:2;pointer-events:none;}
+.ba-tag-before{left:16px;}
+.ba-tag-after{right:16px;}
+.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:0;display:flex;align-items:center;justify-content:center;
+  transform:translateX(-50%);z-index:3;cursor:ew-resize;}
+.ba-handle::before{content:"";position:absolute;top:0;bottom:0;left:0;width:1px;background:var(--red);
+  box-shadow:0 0 14px rgba(196,30,30,.7);}
+.ba-handle-icon{width:44px;height:44px;border-radius:50%;background:var(--red);color:var(--white);display:flex;
+  align-items:center;justify-content:center;font-size:1rem;letter-spacing:0;box-shadow:0 4px 18px rgba(0,0,0,.4);
+  transition:transform .25s var(--ease);}
+.before-after:hover .ba-handle-icon{transform:scale(1.1);}
+.before-after.dragging .ba-handle-icon{transform:scale(1.15);}
+.ba-handle-icon svg{width:20px;height:20px;}
+.before-after:not(.interacted) .ba-handle-icon{animation:baPulse 2.4s ease-in-out infinite;}
+@keyframes baPulse{0%,100%{box-shadow:0 4px 18px rgba(0,0,0,.4),0 0 0 0 rgba(196,30,30,.5);}50%{box-shadow:0 4px 18px rgba(0,0,0,.4),0 0 0 14px rgba(196,30,30,0);}}
+
+.work-caption{padding:22px 24px 26px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;align-items:baseline;}
+.work-caption b{font-family:'Oswald',sans-serif;font-size:1.05rem;letter-spacing:.02em;text-transform:uppercase;}
+.work-caption p{color:var(--gray);font-size:.85rem;width:100%;order:3;margin-top:2px;}
+.work-cat{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);}
+```
 
 - [ ] **Step 6: Implementar `components/BeforeAfterGallery.tsx`** (3 cards, mesmos placeholders "Antes/Depois" do arquivo original — nenhuma foto real ainda):
 
@@ -2065,7 +2326,27 @@ git commit -m "feat: port before/after slider and Trabalhos section"
 **Interfaces:**
 - Produces: `<Location />`, seção `#location`, com o link de WhatsApp `https://wa.me/5524999170017`.
 
-- [ ] **Step 1: Criar `styles/location.css`** — portar verbatim `.location-compose`, `.location-map`, `.location-panel`, `.location-detail`, `.location-actions`, media query `@media(max-width:860px)`.
+- [ ] **Step 1: Criar `styles/location.css`** com o conteúdo exato abaixo:
+
+```css
+.location-compose{position:relative;z-index:2;min-height:640px;border:1px solid var(--line);}
+.location-map{position:absolute;inset:0;}
+.location-map iframe{width:100%;height:100%;border:0;filter:grayscale(1) invert(92%) contrast(88%) brightness(94%);}
+.location-panel{position:relative;z-index:2;max-width:440px;margin:48px;padding:44px 40px;
+  background:rgba(13,13,13,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-left:2px solid var(--red);}
+.location-panel h2{font-size:clamp(2rem,3.6vw,2.8rem);margin:14px 0 30px;}
+.location-detail{margin-bottom:24px;}
+.location-detail .label{display:block;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--red);margin-bottom:8px;}
+.location-detail p{color:var(--gray);font-weight:300;line-height:1.6;font-size:1rem;}
+.location-actions{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:30px;}
+@media(max-width:860px){
+  .location-compose{min-height:auto;display:flex;flex-direction:column;}
+  .location-map{position:relative;height:340px;}
+  .location-panel{margin:0;max-width:none;border-left:0;border-top:2px solid var(--red);backdrop-filter:none;background:var(--graphite);}
+}
+```
 
 - [ ] **Step 2: Implementar `components/Location.tsx`**
 
@@ -2243,7 +2524,63 @@ export function useCardTilt(stageRef: RefObject<HTMLDivElement>, cardRef: RefObj
 Run: `npm test`
 Expected: PASS.
 
-- [ ] **Step 5: Criar `styles/cartao.css`** — portar verbatim o bloco `CARTÃO SF MOTOS` (`.cartao-head`, `.cartao-title`, `.cartao-sub`, `.cartao-stage`, `.sfcard*`, `.cartao-support`, `.cartao-cats`, `.cartao-cat`, `.cartao-cta-wrap`, media queries `@media(max-width:780px)` e `@media(max-width:640px)`).
+- [ ] **Step 5: Criar `styles/cartao.css`** com o conteúdo exato abaixo:
+
+```css
+.cartao-head{position:relative;z-index:2;max-width:720px;margin:0 auto 8px;text-align:center;}
+.cartao-title{font-size:clamp(2.6rem,5.5vw,4.2rem);margin:18px 0 22px;}
+.cartao-sub{color:var(--gray);font-weight:300;font-size:clamp(1.05rem,1.8vw,1.3rem);line-height:1.55;max-width:640px;margin:0 auto;}
+
+.cartao-stage{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;
+  padding:64px 0 56px;perspective:1400px;}
+.cartao-stage::before{content:"";position:absolute;left:50%;top:50%;width:min(640px,90vw);height:min(640px,90vw);
+  transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(196,30,30,.18) 0%, transparent 68%);
+  z-index:0;pointer-events:none;}
+
+.sfcard{position:relative;z-index:1;width:min(460px,86vw);aspect-ratio:1.55/1;border-radius:18px;cursor:pointer;
+  background:linear-gradient(155deg, var(--graphite-2) 0%, var(--black) 72%);
+  border:1px solid rgba(196,30,30,.35);
+  box-shadow:0 30px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(196,30,30,.08) inset, 0 0 42px rgba(196,30,30,.14);
+  transform-style:preserve-3d;transform:rotateX(8deg) rotateY(-14deg) rotateZ(-2deg);
+  transition:transform .5s var(--ease);
+  padding:30px 34px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;
+  --sheen-x:20%;--sheen-y:20%;}
+.sfcard-sheen{position:absolute;inset:0;pointer-events:none;z-index:2;
+  background:radial-gradient(circle at var(--sheen-x) var(--sheen-y), rgba(245,245,240,.16) 0%, rgba(196,30,30,.16) 22%, transparent 46%);
+  transition:background-position .5s var(--ease);mix-blend-mode:screen;}
+.sfcard-pattern{position:absolute;right:-64px;bottom:-64px;width:220px;height:220px;border-radius:50%;
+  border:22px dashed rgba(196,30,30,.14);z-index:0;pointer-events:none;}
+.sfcard-top{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;}
+.sfcard-logo{width:46px;height:46px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5));}
+.sfcard-medal{width:28px;height:28px;color:var(--red);opacity:.85;}
+.sfcard-medal svg{width:100%;height:100%;}
+.sfcard-body{position:relative;z-index:3;display:flex;flex-direction:column;gap:6px;}
+.sfcard-body b{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(1.6rem,3vw,2.1rem);letter-spacing:.05em;color:var(--white);}
+.sfcard-body span{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);}
+.sfcard-bottom{position:relative;z-index:3;}
+.sfcard-bottom .eyebrow{font-size:.66rem;}
+
+.cartao-support{position:relative;z-index:2;max-width:620px;margin:0 auto 70px;text-align:center;
+  color:var(--gray);font-weight:300;line-height:1.65;font-size:1rem;}
+
+.cartao-cats{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:64px;}
+.cartao-cat{background:var(--black);padding:34px 24px;text-align:center;display:flex;flex-direction:column;
+  align-items:center;gap:14px;transition:background .3s;}
+.cartao-cat:hover{background:var(--graphite-2);}
+.cartao-cat .icon{width:32px;height:32px;color:var(--white);}
+.cartao-cat .icon svg{width:100%;height:100%;}
+.cartao-cat b{font-family:'Oswald',sans-serif;font-size:1rem;letter-spacing:.02em;text-transform:uppercase;color:var(--white);}
+.cartao-cat p{color:var(--gray);font-size:.86rem;font-weight:300;line-height:1.5;max-width:24ch;}
+
+.cartao-cta-wrap{position:relative;z-index:2;text-align:center;}
+
+@media(max-width:780px){.cartao-cats{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:640px){
+  .sfcard{transform:rotateX(4deg) rotateY(-6deg) rotateZ(-1deg);}
+  .cartao-stage{padding:44px 0 48px;}
+}
+```
 
 - [ ] **Step 6: Implementar `components/SFCard.tsx`** (4 categorias com os mesmos ícones/textos já definidos nesta conversa: Oficina, Chopp gelado & petiscos, Itens para moto, Acessórios):
 
@@ -2385,7 +2722,29 @@ git commit -m "feat: port Cartão SF Motos 3D tilt section"
 **Interfaces:**
 - Produces: `<CtaFinal />` (seção `#contact`), `<Footer />`.
 
-- [ ] **Step 1: Criar `styles/cta-footer.css`** — portar verbatim `.cta-band`, `.cta-watermark`, `.cta-inner`, `footer{...}` e seus filhos.
+- [ ] **Step 1: Criar `styles/cta-footer.css`** com o conteúdo exato abaixo (`.btn-dark` já existe em `styles/base.css`, Task 2 — não repetir aqui):
+
+```css
+.cta-band{background:radial-gradient(ellipse 120% 100% at 25% 0%, var(--red) 0%, var(--red-dark) 100%);
+  color:var(--black);padding:130px 6vw;text-align:center;position:relative;overflow:hidden;}
+.cta-band .section-fade.top{background:linear-gradient(to bottom, var(--black), var(--red));}
+.cta-band .section-fade.bottom{background:linear-gradient(to bottom, var(--red-dark), var(--black));}
+.cta-watermark{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:'Oswald',sans-serif;
+  font-weight:700;font-size:min(46vw,620px);color:rgba(13,13,13,.06);letter-spacing:.02em;pointer-events:none;
+  white-space:nowrap;line-height:1;z-index:0;}
+.cta-inner{position:relative;z-index:2;max-width:760px;margin:0 auto;}
+.cta-band .eyebrow{color:rgba(13,13,13,.6);justify-content:center;}
+.cta-band .eyebrow::before{background:var(--black);}
+.cta-band h2{color:var(--black);font-size:clamp(2.2rem,5.4vw,3.8rem);margin:18px 0 18px;}
+.cta-band p{font-weight:400;color:rgba(13,13,13,.75);margin-bottom:36px;font-size:1.05rem;}
+
+footer{padding:60px 6vw 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;
+  font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--gray);border-top:1px solid var(--line);}
+footer .logo-mark{margin-bottom:8px;font-family:'Oswald',sans-serif;font-weight:600;font-size:1.15rem;letter-spacing:.06em;color:var(--white);}
+footer .foot-links{display:flex;gap:22px;}
+footer .foot-links a{opacity:.7;transition:opacity .2s;}
+footer .foot-links a:hover{opacity:1;color:var(--red);}
+```
 
 - [ ] **Step 2: Implementar `components/CtaFinal.tsx`**
 
