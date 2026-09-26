@@ -1388,14 +1388,14 @@ export function Hero() {
 }
 ```
 
-- [ ] **Step 2: Montar temporariamente em `app/page.tsx`, verificar visualmente**
+- [ ] **Step 2: Montar temporariamente em `app/page.tsx`, verificar visualmente, reverter**
 
-Comparar lado a lado com `thaian-lq.github.io/sf-motos`: título, tagline, botões, crossfade para a segunda fase ao rolar, stats "2026" / "5.0", scroll cue.
+Comparar lado a lado com `thaian-lq.github.io/sf-motos`: título, tagline, botões, crossfade para a segunda fase ao rolar, stats "2026" / "5.0", scroll cue. Depois de verificar, reverta a montagem temporária em `app/page.tsx` — a montagem definitiva de todas as seções acontece de uma vez só na Task 18, não seção por seção.
 
 - [ ] **Step 3: Commit**
 
 ```bash
-git add components/Hero.tsx styles/hero.css app/globals.css app/page.tsx
+git add components/Hero.tsx styles/hero.css app/globals.css
 git commit -m "feat: port Hero section"
 ```
 
