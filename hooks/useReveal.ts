@@ -1,23 +1,26 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
+// O "in-view" fica no estado do React (e não só em classList) para sobreviver a
+// re-renders que trocam o className do elemento, como o "is-playing" do vídeo da oficina.
 export function useReveal<T extends HTMLElement>() {
   const ref = useRef<T | null>(null);
+  const [inView, setInView] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
     if (!("IntersectionObserver" in window)) {
-      el.classList.add("in-view");
-      return;
+      const id = requestAnimationFrame(() => setInView(true));
+      return () => cancelAnimationFrame(id);
     }
 
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("in-view");
+            setInView(true);
             io.unobserve(entry.target);
           }
         });
@@ -28,5 +31,5 @@ export function useReveal<T extends HTMLElement>() {
     return () => io.disconnect();
   }, []);
 
-  return ref;
+  return { ref, inView };
 }

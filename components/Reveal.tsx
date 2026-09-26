@@ -13,7 +13,7 @@ interface RevealProps {
 }
 
 export function Reveal({ children, delayMs = 0, className, as: Tag = "div", elRef }: RevealProps) {
-  const ref = useReveal<HTMLElement>();
+  const { ref, inView } = useReveal<HTMLElement>();
   const style = { "--d": `${delayMs}ms` } as CSSProperties;
 
   return (
@@ -23,7 +23,7 @@ export function Reveal({ children, delayMs = 0, className, as: Tag = "div", elRe
         elRef?.(el);
       }}
       data-reveal
-      className={className}
+      className={[className, inView && "in-view"].filter(Boolean).join(" ") || undefined}
       style={style}
     >
       {children}
