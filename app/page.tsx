@@ -6,7 +6,7 @@ import { Services } from "@/components/Services";
 import { GarageExperience } from "@/components/GarageExperience";
 import { BeforeAfterGallery } from "@/components/BeforeAfterGallery";
 import { Location } from "@/components/Location";
-import { SFCard } from "@/components/SFCard";
+import { MotoDashboard } from "@/components/MotoDashboard";
 import { CtaFinal } from "@/components/CtaFinal";
 import { Footer } from "@/components/Footer";
 
@@ -21,7 +21,7 @@ export default function Home() {
       <GarageExperience />
       <BeforeAfterGallery />
       <Location />
-      <SFCard />
+      <MotoDashboard />
       <CtaFinal />
       <Footer />
     </>
