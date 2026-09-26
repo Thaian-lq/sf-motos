@@ -1,0 +1,11 @@
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  .scrub-scroll{height:100svh;}
+  .scrub{position:relative;}
+  .cue-line::after,.cue-fill{transition:none;}
+  [data-reveal]{opacity:1 !important;transform:none !important;transition:none !important;}
+  .ba-handle-icon{animation:none !important;}
+  .cursor-dot,.cursor-ring{display:none !important;}
+  .phase-block{transition:none !important;}
+  .process-step,.service-card,.work-card{transition:none !important;}
+}

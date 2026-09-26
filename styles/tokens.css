@@ -1,0 +1,7 @@
+:root{
+  --black:#0D0D0D; --graphite:#1A1A1A; --graphite-2:#232323;
+  --red:#C41E1E; --red-dark:#8A1414; --white:#F5F5F0; --gray:#8C8C8C;
+  --line: rgba(245,245,240,0.08);
+  --line-strong: rgba(245,245,240,0.16);
+  --ease: cubic-bezier(.16,.84,.44,1);
+}
