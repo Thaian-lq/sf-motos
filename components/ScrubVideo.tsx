@@ -18,6 +18,7 @@ export interface ScrubCueConfig {
 
 export interface ScrubVideoProps {
   scrollId: string;
+  sectionId: string;
   src: string;
   frameCount: number;
   heightVh: number;
@@ -59,7 +60,7 @@ export function ScrubVideo(props: ScrubVideoProps) {
 
   return (
     <div className={`scrub-scroll${props.short ? " short" : ""}`} id={props.scrollId} ref={wrapperRef}>
-      <section className="scrub">
+      <section className="scrub" id={props.sectionId}>
         <div className="scrub-video-wrap cursor-hover-target" ref={videoWrapRef}>
           <video ref={videoRef} muted playsInline preload="none" aria-hidden="true" />
           <canvas ref={canvasRef} aria-hidden="true" />

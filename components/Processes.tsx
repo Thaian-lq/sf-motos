@@ -13,7 +13,7 @@ const STEPS = [
 export function Processes() {
   const sectionRef = useRef<HTMLElement>(null);
   const fillRef = useRef<HTMLElement>(null);
-  const stepRefs = useRef<HTMLDivElement[]>([]);
+  const stepRefs = useRef<HTMLElement[]>([]);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -62,14 +62,14 @@ export function Processes() {
       <div className="process-timeline">
         <div className="timeline-track"><i className="timeline-fill" ref={fillRef} /></div>
         {STEPS.map((step, i) => (
-          <Reveal key={step.num} delayMs={i * 80}>
-            <div
-              className="process-step cursor-hover-target"
-              ref={(el) => { if (el) stepRefs.current[i] = el; }}
-            >
-              <span className="step-num">{step.num}</span>
-              <div className="step-body"><h3>{step.title}</h3><p>{step.body}</p></div>
-            </div>
+          <Reveal
+            key={step.num}
+            delayMs={i * 80}
+            className="process-step cursor-hover-target"
+            elRef={(el) => { if (el) stepRefs.current[i] = el; }}
+          >
+            <span className="step-num">{step.num}</span>
+            <div className="step-body"><h3>{step.title}</h3><p>{step.body}</p></div>
           </Reveal>
         ))}
       </div>

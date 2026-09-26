@@ -8,7 +8,7 @@
 @media(min-width:720px){.process-step{grid-template-columns:108px 1fr;gap:36px;}}
 .process-step:last-child{border-bottom:0;}
 .process-step:hover{padding-left:14px;}
-.step-num{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2.4rem,4.5vw,3.6rem);color:var(--graphite-2);
+.step-num{font-family:var(--font-oswald),sans-serif;font-weight:700;font-size:clamp(2.4rem,4.5vw,3.6rem);color:var(--graphite-2);
   -webkit-text-stroke:1px var(--line-strong);transition:color .35s, -webkit-text-stroke-color .35s, transform .35s var(--ease);
   line-height:1;}
 .process-step:hover .step-num,.process-step.in-view .step-num{color:transparent;-webkit-text-stroke-color:var(--red);}

@@ -39,24 +39,24 @@
 
 h1.title,.scrub-content h2{font-size:clamp(3rem,8vw,6.4rem);font-weight:700;margin-bottom:6px;}
 .accent{color:var(--red);}
-.hero-tagline{font-family:'JetBrains Mono',monospace;font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gray);
+.hero-tagline{font-family:var(--font-jetbrains),monospace;font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gray);
   margin:20px 0 38px;}
-.scrub-sub{font-family:'Inter',sans-serif;font-weight:300;font-size:clamp(1rem,1.6vw,1.25rem);color:var(--gray);
+.scrub-sub{font-family:var(--font-inter),sans-serif;font-weight:300;font-size:clamp(1rem,1.6vw,1.25rem);color:var(--gray);
   max-width:520px;margin:22px 0 40px;line-height:1.55;}
 .scrub-content.align-right .scrub-sub{margin-left:auto;}
 .stat-row{display:flex;gap:48px;margin-top:36px;}
-.stat b{font-family:'Oswald',sans-serif;font-size:2.4rem;color:var(--red);display:block;}
-.stat span{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.1em;color:var(--gray);text-transform:uppercase;}
+.stat b{font-family:var(--font-oswald),sans-serif;font-size:2.4rem;color:var(--red);display:block;}
+.stat span{font-family:var(--font-jetbrains),monospace;font-size:.68rem;letter-spacing:.1em;color:var(--gray);text-transform:uppercase;}
 
 .scrub-actions{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
 .scrub-content.align-right .scrub-actions{justify-content:flex-end;}
 
 .reveal-word{font-size:clamp(3.4rem,10vw,8rem);font-weight:700;}
-.reveal-hint{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.15em;color:var(--gray);margin-top:26px;display:inline-block;}
+.reveal-hint{font-family:var(--font-jetbrains),monospace;font-size:.78rem;letter-spacing:.15em;color:var(--gray);margin-top:26px;display:inline-block;}
 .reveal-hint:hover{color:var(--white);}
 
 .scroll-cue{position:absolute;bottom:38px;left:6vw;display:flex;align-items:center;gap:14px;z-index:3;
-  font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);
+  font-family:var(--font-jetbrains),monospace;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);
   transition:opacity .4s ease;}
 .scroll-cue.right{left:auto;right:6vw;flex-direction:row-reverse;}
 .cue-line{width:1px;height:44px;background:rgba(245,245,240,.18);position:relative;overflow:hidden;}

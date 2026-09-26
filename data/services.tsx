@@ -12,7 +12,7 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    num: "02",
+    num: "01",
     title: "Motor & performance",
     description: "Retífica, upgrade de potência e tuning.",
     featured: true,
@@ -30,7 +30,7 @@ export const services: Service[] = [
     ),
   },
   {
-    num: "01",
+    num: "02",
     title: "Revisão geral",
     description: "Check-up completo de motor, freios e suspensão.",
     icon: (

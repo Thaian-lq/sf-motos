@@ -47,7 +47,7 @@ export function GarageExperience() {
 
         <div className="garage-grid">
           {galleryPhotos.map((photo, i) => (
-            <Reveal key={photo.src} delayMs={80 + i * 60} className={`garage-photo cursor-hover-target${photo.size === "hero" ? " g-hero" : ""}`}>
+            <Reveal as="figure" key={photo.src} delayMs={80 + i * 60} className={`garage-photo cursor-hover-target${photo.size === "hero" ? " g-hero" : ""}`}>
               <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 1000px) 50vw, 25vw" style={{ objectFit: "cover" }} />
               <span className="garage-photo-tag">{photo.tag}</span>
             </Reveal>

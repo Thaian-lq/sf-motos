@@ -26,8 +26,8 @@
 .sfcard-medal{width:28px;height:28px;color:var(--red);opacity:.85;}
 .sfcard-medal svg{width:100%;height:100%;}
 .sfcard-body{position:relative;z-index:3;display:flex;flex-direction:column;gap:6px;}
-.sfcard-body b{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(1.6rem,3vw,2.1rem);letter-spacing:.05em;color:var(--white);}
-.sfcard-body span{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);}
+.sfcard-body b{font-family:var(--font-oswald),sans-serif;font-weight:700;font-size:clamp(1.6rem,3vw,2.1rem);letter-spacing:.05em;color:var(--white);}
+.sfcard-body span{font-family:var(--font-jetbrains),monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);}
 .sfcard-bottom{position:relative;z-index:3;}
 .sfcard-bottom .eyebrow{font-size:.66rem;}
 
@@ -41,7 +41,7 @@
 .cartao-cat:hover{background:var(--graphite-2);}
 .cartao-cat .icon{width:32px;height:32px;color:var(--white);}
 .cartao-cat .icon svg{width:100%;height:100%;}
-.cartao-cat b{font-family:'Oswald',sans-serif;font-size:1rem;letter-spacing:.02em;text-transform:uppercase;color:var(--white);}
+.cartao-cat b{font-family:var(--font-oswald),sans-serif;font-size:1rem;letter-spacing:.02em;text-transform:uppercase;color:var(--white);}
 .cartao-cat p{color:var(--gray);font-size:.86rem;font-weight:300;line-height:1.5;max-width:24ch;}
 
 .cartao-cta-wrap{position:relative;z-index:2;text-align:center;}

@@ -90,7 +90,7 @@ export function SFCard() {
         </div>
       </div>
 
-      <Reveal className="cartao-support">
+      <Reveal as="p" className="cartao-support">
         Na SF Motos, você encontra muito mais do que uma oficina. Tenha por perto tudo o que faz
         parte da experiência de quem vive o mundo das duas rodas.
       </Reveal>

@@ -2,7 +2,7 @@
   color:var(--black);padding:130px 6vw;text-align:center;position:relative;overflow:hidden;}
 .cta-band .section-fade.top{background:linear-gradient(to bottom, var(--black), var(--red));}
 .cta-band .section-fade.bottom{background:linear-gradient(to bottom, var(--red-dark), var(--black));}
-.cta-watermark{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:'Oswald',sans-serif;
+.cta-watermark{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:var(--font-oswald),sans-serif;
   font-weight:700;font-size:min(46vw,620px);color:rgba(13,13,13,.06);letter-spacing:.02em;pointer-events:none;
   white-space:nowrap;line-height:1;z-index:0;}
 .cta-inner{position:relative;z-index:2;max-width:760px;margin:0 auto;}
@@ -12,8 +12,8 @@
 .cta-band p{font-weight:400;color:rgba(13,13,13,.75);margin-bottom:36px;font-size:1.05rem;}
 
 footer{padding:60px 6vw 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;
-  font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--gray);border-top:1px solid var(--line);}
-footer .logo-mark{margin-bottom:8px;font-family:'Oswald',sans-serif;font-weight:600;font-size:1.15rem;letter-spacing:.06em;color:var(--white);}
+  font-family:var(--font-jetbrains),monospace;font-size:.75rem;color:var(--gray);border-top:1px solid var(--line);}
+footer .logo-mark{margin-bottom:8px;font-family:var(--font-oswald),sans-serif;font-weight:600;font-size:1.15rem;letter-spacing:.06em;color:var(--white);}
 footer .foot-links{display:flex;gap:22px;}
 footer .foot-links a{opacity:.7;transition:opacity .2s;}
 footer .foot-links a:hover{opacity:1;color:var(--red);}

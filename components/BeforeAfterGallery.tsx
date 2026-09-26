@@ -12,7 +12,7 @@ function BeforeAfterCard({ label, featured, delayMs }: { label: string; featured
   const { containerRef, percent, dragging, interacted, handlers } = useBeforeAfterSlider();
 
   return (
-    <Reveal delayMs={delayMs} className={`work-card cursor-hover-target${featured ? " featured" : ""}`}>
+    <Reveal as="article" delayMs={delayMs} className={`work-card cursor-hover-target${featured ? " featured" : ""}`}>
       <div
         className={`before-after cursor-hover-target${dragging ? " dragging" : ""}${interacted ? " interacted" : ""}`}
         ref={containerRef}

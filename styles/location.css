@@ -6,7 +6,7 @@
   border-left:2px solid var(--red);}
 .location-panel h2{font-size:clamp(2rem,3.6vw,2.8rem);margin:14px 0 30px;}
 .location-detail{margin-bottom:24px;}
-.location-detail .label{display:block;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.15em;
+.location-detail .label{display:block;font-family:var(--font-jetbrains),monospace;font-size:.68rem;letter-spacing:.15em;
   text-transform:uppercase;color:var(--red);margin-bottom:8px;}
 .location-detail p{color:var(--gray);font-weight:300;line-height:1.6;font-size:1rem;}
 .location-actions{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:30px;}

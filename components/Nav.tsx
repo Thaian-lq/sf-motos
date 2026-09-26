@@ -34,7 +34,7 @@ export function Nav() {
   }, [open]);
 
   return (
-    <nav className={scrolled ? "is-scrolled" : undefined}>
+    <nav id="siteNav" className={scrolled ? "is-scrolled" : undefined}>
       <a href="#hero" className="logo-mark cursor-hover-target" aria-label="SF Motos — início">
         <Image src="/imgs/logo-sf.png" alt="" className="logo-mark-img" width={38} height={38} />
         SF<span>·</span>MOTOS

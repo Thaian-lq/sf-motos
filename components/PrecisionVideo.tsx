@@ -4,6 +4,7 @@ export function PrecisionVideo() {
   return (
     <ScrubVideo
       scrollId="motorScroll"
+      sectionId="motor"
       short
       src="/video/motor.mp4"
       frameCount={72}

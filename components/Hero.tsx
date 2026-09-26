@@ -4,6 +4,7 @@ export function Hero() {
   return (
     <ScrubVideo
       scrollId="heroScroll"
+      sectionId="hero"
       src="/video/moto.mp4"
       frameCount={90}
       heightVh={220}
