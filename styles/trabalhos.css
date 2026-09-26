@@ -1,0 +1,33 @@
+.trabalhos-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.work-card.featured{grid-column:1/-1;}
+@media(max-width:860px){.trabalhos-grid{grid-template-columns:1fr;}}
+.work-card{border:1px solid var(--line);background:var(--black);}
+
+.before-after{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;touch-action:pan-y;cursor:ew-resize;user-select:none;}
+.work-card.featured .before-after{aspect-ratio:21/9;}
+.ba-media{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.ba-before{background:repeating-linear-gradient(135deg, #161616, #161616 10px, #1c1c1c 10px, #1c1c1c 20px);filter:grayscale(.4) brightness(.85);}
+.ba-after{background:repeating-linear-gradient(135deg, #1a1010, #1a1010 10px, #241414 10px, #241414 20px);
+  clip-path:inset(0 0 0 50%);will-change:clip-path;}
+.ba-media span{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);}
+.ba-tag{position:absolute;top:16px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--white);background:rgba(13,13,13,.55);padding:6px 10px;z-index:2;pointer-events:none;}
+.ba-tag-before{left:16px;}
+.ba-tag-after{right:16px;}
+.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:0;display:flex;align-items:center;justify-content:center;
+  transform:translateX(-50%);z-index:3;cursor:ew-resize;}
+.ba-handle::before{content:"";position:absolute;top:0;bottom:0;left:0;width:1px;background:var(--red);
+  box-shadow:0 0 14px rgba(196,30,30,.7);}
+.ba-handle-icon{width:44px;height:44px;border-radius:50%;background:var(--red);color:var(--white);display:flex;
+  align-items:center;justify-content:center;font-size:1rem;letter-spacing:0;box-shadow:0 4px 18px rgba(0,0,0,.4);
+  transition:transform .25s var(--ease);}
+.before-after:hover .ba-handle-icon{transform:scale(1.1);}
+.before-after.dragging .ba-handle-icon{transform:scale(1.15);}
+.ba-handle-icon svg{width:20px;height:20px;}
+.before-after:not(.interacted) .ba-handle-icon{animation:baPulse 2.4s ease-in-out infinite;}
+@keyframes baPulse{0%,100%{box-shadow:0 4px 18px rgba(0,0,0,.4),0 0 0 0 rgba(196,30,30,.5);}50%{box-shadow:0 4px 18px rgba(0,0,0,.4),0 0 0 14px rgba(196,30,30,0);}}
+
+.work-caption{padding:22px 24px 26px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;align-items:baseline;}
+.work-caption b{font-family:'Oswald',sans-serif;font-size:1.05rem;letter-spacing:.02em;text-transform:uppercase;}
+.work-caption p{color:var(--gray);font-size:.85rem;width:100%;order:3;margin-top:2px;}
+.work-cat{font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);}
