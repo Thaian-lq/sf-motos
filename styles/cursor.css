@@ -1,0 +1,10 @@
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;
+  transform:translate3d(-50%,-50%,0);will-change:transform;}
+.cursor-dot{width:10px;height:9px;background:var(--red);clip-path:polygon(50% 0,100% 100%,0 100%);opacity:0;transition:opacity .2s;}
+.cursor-ring{width:38px;height:38px;background:rgba(245,245,240,.55);opacity:0;
+  -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,6 94,90 6,90' fill='none' stroke='white' stroke-width='3' stroke-linejoin='round'/></svg>") center/100% 100% no-repeat;
+  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,6 94,90 6,90' fill='none' stroke='white' stroke-width='3' stroke-linejoin='round'/></svg>") center/100% 100% no-repeat;
+  transition:opacity .2s, width .25s var(--ease), height .25s var(--ease), background-color .25s;}
+html.has-cursor .cursor-dot,html.has-cursor .cursor-ring{opacity:1;}
+html.has-cursor .cursor-ring.cursor-hover{width:64px;height:64px;background:var(--red);}
+html.has-cursor .cursor-ring.cursor-drag{width:88px;height:88px;background:var(--red);}
