@@ -133,7 +133,7 @@ html.nav-open .nav-toggle span:nth-child(3){transform:translateY(-6px) rotate(-4
 /* =========================================================
    SCROLL-SCRUBBED VIDEO SECTIONS (shared — HERO + SECOND VIDEO)
    ========================================================= */
-.scrub-scroll{position:relative;height:420vh;}
+.scrub-scroll{position:relative;height:220vh;}
 .scrub-scroll.short{height:280vh;}
 .scrub{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;padding:0 6vw;overflow:hidden;background:var(--black);}
 
@@ -177,7 +177,7 @@ html.nav-open .nav-toggle span:nth-child(3){transform:translateY(-6px) rotate(-4
 .scrub-content.align-right .eyebrow::before{display:none;}
 
 h1.title,.scrub-content h2{font-size:clamp(3rem,8vw,6.4rem);font-weight:700;margin-bottom:6px;}
-h1.title .accent,.scrub-content h2 .accent,.garage-title .accent{color:var(--red);}
+h1.title .accent,.scrub-content h2 .accent,.garage-title .accent,.cartao-title .accent{color:var(--red);}
 .hero-tagline{font-family:'JetBrains Mono',monospace;font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gray);
   margin:20px 0 38px;}
 .scrub-sub{font-family:'Inter',sans-serif;font-weight:300;font-size:clamp(1rem,1.6vw,1.25rem);color:var(--gray);
@@ -406,6 +406,63 @@ h1.title .accent,.scrub-content h2 .accent,.garage-title .accent{color:var(--red
 .btn-dark{background:var(--black);color:var(--white);padding:18px 40px;font-family:'Oswald',sans-serif;font-weight:600;
   letter-spacing:.06em;text-transform:uppercase;font-size:.92rem;display:inline-block;transition:transform .25s var(--ease), background .25s;}
 .btn-dark:hover{transform:translateY(-2px);background:var(--graphite);}
+
+/* =========================================================
+   CARTÃO SF MOTOS — lifestyle / cartão premium 3D
+   ========================================================= */
+.cartao-head{position:relative;z-index:2;max-width:720px;margin:0 auto 8px;text-align:center;}
+.cartao-title{font-size:clamp(2.6rem,5.5vw,4.2rem);margin:18px 0 22px;}
+.cartao-sub{color:var(--gray);font-weight:300;font-size:clamp(1.05rem,1.8vw,1.3rem);line-height:1.55;max-width:640px;margin:0 auto;}
+
+.cartao-stage{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;
+  padding:64px 0 56px;perspective:1400px;}
+.cartao-stage::before{content:"";position:absolute;left:50%;top:50%;width:min(640px,90vw);height:min(640px,90vw);
+  transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(196,30,30,.18) 0%, transparent 68%);
+  z-index:0;pointer-events:none;}
+
+.sfcard{position:relative;z-index:1;width:min(460px,86vw);aspect-ratio:1.55/1;border-radius:18px;cursor:pointer;
+  background:linear-gradient(155deg, var(--graphite-2) 0%, var(--black) 72%);
+  border:1px solid rgba(196,30,30,.35);
+  box-shadow:0 30px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(196,30,30,.08) inset, 0 0 42px rgba(196,30,30,.14);
+  transform-style:preserve-3d;transform:rotateX(8deg) rotateY(-14deg) rotateZ(-2deg);
+  transition:transform .5s var(--ease);
+  padding:30px 34px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;
+  --sheen-x:20%;--sheen-y:20%;}
+.sfcard-sheen{position:absolute;inset:0;pointer-events:none;z-index:2;
+  background:radial-gradient(circle at var(--sheen-x) var(--sheen-y), rgba(245,245,240,.16) 0%, rgba(196,30,30,.16) 22%, transparent 46%);
+  transition:background-position .5s var(--ease);mix-blend-mode:screen;}
+.sfcard-pattern{position:absolute;right:-64px;bottom:-64px;width:220px;height:220px;border-radius:50%;
+  border:22px dashed rgba(196,30,30,.14);z-index:0;pointer-events:none;}
+.sfcard-top{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;}
+.sfcard-logo{width:46px;height:46px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5));}
+.sfcard-medal{width:28px;height:28px;color:var(--red);opacity:.85;}
+.sfcard-medal svg{width:100%;height:100%;}
+.sfcard-body{position:relative;z-index:3;display:flex;flex-direction:column;gap:6px;}
+.sfcard-body b{font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(1.6rem,3vw,2.1rem);letter-spacing:.05em;color:var(--white);}
+.sfcard-body span{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);}
+.sfcard-bottom{position:relative;z-index:3;}
+.sfcard-bottom .eyebrow{font-size:.66rem;}
+
+.cartao-support{position:relative;z-index:2;max-width:620px;margin:0 auto 70px;text-align:center;
+  color:var(--gray);font-weight:300;line-height:1.65;font-size:1rem;}
+
+.cartao-cats{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:64px;}
+.cartao-cat{background:var(--black);padding:34px 24px;text-align:center;display:flex;flex-direction:column;
+  align-items:center;gap:14px;transition:background .3s;}
+.cartao-cat:hover{background:var(--graphite-2);}
+.cartao-cat .icon{width:32px;height:32px;color:var(--white);}
+.cartao-cat .icon svg{width:100%;height:100%;}
+.cartao-cat b{font-family:'Oswald',sans-serif;font-size:1rem;letter-spacing:.02em;text-transform:uppercase;color:var(--white);}
+.cartao-cat p{color:var(--gray);font-size:.86rem;font-weight:300;line-height:1.5;max-width:24ch;}
+
+.cartao-cta-wrap{position:relative;z-index:2;text-align:center;}
+
+@media(max-width:780px){.cartao-cats{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:640px){
+  .sfcard{transform:rotateX(4deg) rotateY(-6deg) rotateZ(-1deg);}
+  .cartao-stage{padding:44px 0 48px;}
+}
 
 /* =========================================================
    FOOTER
@@ -803,11 +860,73 @@ footer .foot-links a:hover{opacity:1;color:var(--red);}
         <span class="label">Horário</span>
         <p>Seg — Sáb<br>08h às 18h</p>
       </div>
+      <div class="location-detail">
+        <span class="label">WhatsApp</span>
+        <p>(24) 99917-0017</p>
+      </div>
       <div class="location-actions">
         <a href="https://www.google.com/maps/dir/?api=1&destination=R.+Dalva+Menandro%2C+34+-+Comercial%2C+Resende+-+RJ%2C+27541-180" target="_blank" rel="noreferrer" class="btn-ghost">Como chegar →</a>
-        <a href="#" class="btn-primary">Chamar no WhatsApp</a>
+        <a href="https://wa.me/5524999170017?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20SF%20Motos." target="_blank" rel="noreferrer" class="btn-primary">Chamar no WhatsApp</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CARTÃO SF MOTOS — lifestyle / cartão premium 3D
+     ============================================================ -->
+<section class="section" id="cartao">
+  <div class="cartao-head" data-reveal>
+    <span class="eyebrow">SF Motos / Lifestyle</span>
+    <h2 class="cartao-title">Cartão <span class="accent">SF Motos</span></h2>
+    <p class="cartao-sub">Tudo o que você precisa para sua moto e para curtir o momento, em um só lugar.</p>
+  </div>
+
+  <div class="cartao-stage" id="cartaoStage">
+    <div class="sfcard" id="sfCard">
+      <div class="sfcard-sheen"></div>
+      <div class="sfcard-pattern" aria-hidden="true"></div>
+      <div class="sfcard-top">
+        <img src="imgs/logo-sf.png" alt="" class="sfcard-logo" width="46" height="46" loading="lazy" decoding="async">
+        <span class="sfcard-medal" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span>
+      </div>
+      <div class="sfcard-body">
+        <b>SF · MOTOS</b>
+        <span>Oficina · Lifestyle · Motos</span>
+      </div>
+      <div class="sfcard-bottom">
+        <span class="eyebrow">Cartão SF Motos</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="cartao-support" data-reveal>Na SF Motos, você encontra muito mais do que uma oficina. Tenha por perto tudo o que faz parte da experiência de quem vive o mundo das duas rodas.</p>
+
+  <div class="cartao-cats">
+    <div class="cartao-cat" data-reveal style="--d:0ms">
+      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14.5 6.5a3.5 3.5 0 10-4.9 4.9L4 17l3 3 6.4-6.4a3.5 3.5 0 004.9-4.9l-2.3 2.3-2-.5-.5-2 2.3-2.3z"/><circle cx="12" cy="12" r="1.1" style="fill:var(--red);stroke:none"/></svg></span>
+      <b>Oficina</b>
+      <p>Serviço técnico e cuidado com sua moto.</p>
+    </div>
+    <div class="cartao-cat" data-reveal style="--d:80ms">
+      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 8h10v10a2 2 0 01-2 2H8a2 2 0 01-2-2V8z"/><path d="M16 10h2a2 2 0 012 2v2a2 2 0 01-2 2h-2"/><path d="M6 8c0-2 1.2-3 1.2-4.4M9.4 8c0-2 1.2-3 1.2-4.4" style="stroke:var(--red)"/></svg></span>
+      <b>Chopp gelado</b>
+      <p>Boa companhia enquanto sua moto é atendida.</p>
+    </div>
+    <div class="cartao-cat" data-reveal style="--d:160ms">
+      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 14a8 8 0 0116 0v2a2 2 0 01-2 2h-1v-3a1 1 0 00-1-1H8a1 1 0 00-1 1v3H6a2 2 0 01-2-2v-2z"/><path d="M9 12h6" style="stroke:var(--red)"/></svg></span>
+      <b>Itens para moto</b>
+      <p>Produtos e itens para sua moto.</p>
+    </div>
+    <div class="cartao-cat" data-reveal style="--d:240ms">
+      <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="7" cy="13" r="3.2"/><circle cx="17" cy="13" r="3.2"/><path d="M10.2 12h3.6"/><path d="M3.8 12L2 10M20.2 12L22 10" style="stroke:var(--red)"/></svg></span>
+      <b>Acessórios</b>
+      <p>Praticidade e estilo para sua moto.</p>
+    </div>
+  </div>
+
+  <div class="cartao-cta-wrap" data-reveal>
+    <a href="#contact" class="btn-primary">Conheça o Cartão SF Motos</a>
   </div>
 </section>
 
@@ -822,7 +941,7 @@ footer .foot-links a:hover{opacity:1;color:var(--red);}
     <span class="eyebrow">Fale com a oficina</span>
     <h2>Sua moto merece<br>manutenção de verdade</h2>
     <p>Fale com a oficina agora pelo WhatsApp</p>
-    <a href="#" class="btn-dark">Chamar no WhatsApp</a>
+    <a href="https://wa.me/5524999170017?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20SF%20Motos." target="_blank" rel="noreferrer" class="btn-dark">Chamar no WhatsApp</a>
   </div>
 </section>
 
@@ -909,7 +1028,7 @@ footer .foot-links a:hover{opacity:1;color:var(--red);}
       requestAnimationFrame(ringLoop);
     }
     ringLoop();
-    var hoverTargets = 'a, button, .service-card, .work-card, .process-step, .garage-photo, video';
+    var hoverTargets = 'a, button, .service-card, .work-card, .process-step, .garage-photo, .sfcard, video';
     document.addEventListener('pointerover', function(e){
       if(e.target.closest && e.target.closest('[data-before-after]')) return;
       if(e.target.closest && e.target.closest(hoverTargets)) ring.classList.add('cursor-hover');
@@ -1357,6 +1476,40 @@ footer .foot-links a:hover{opacity:1;color:var(--red);}
     } else {
       loadSource();
     }
+  })();
+
+  /* ---------------------------------------------------------
+     CARTÃO SF MOTOS — tilt 3D + reflexo de luz no mouse
+     --------------------------------------------------------- */
+  (function(){
+    var stage = document.getElementById('cartaoStage');
+    var card = document.getElementById('sfCard');
+    if (!stage || !card || !hasFinePointer || prefersReduced) return;
+
+    var baseTransform = 'rotateX(8deg) rotateY(-14deg) rotateZ(-2deg)';
+    var raf = null;
+
+    function onMove(e){
+      if (raf) return;
+      raf = requestAnimationFrame(function(){
+        raf = null;
+        var rect = stage.getBoundingClientRect();
+        var px = clamp((e.clientX - rect.left) / rect.width, 0, 1);
+        var py = clamp((e.clientY - rect.top) / rect.height, 0, 1);
+        var rx = (0.5 - py) * 22 + 8;
+        var ry = (px - 0.5) * 28 - 14;
+        card.style.transform = 'rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) rotateZ(-2deg)';
+        card.style.setProperty('--sheen-x', (px * 100) + '%');
+        card.style.setProperty('--sheen-y', (py * 100) + '%');
+      });
+    }
+    function onLeave(){
+      card.style.transform = baseTransform;
+      card.style.setProperty('--sheen-x', '20%');
+      card.style.setProperty('--sheen-y', '20%');
+    }
+    stage.addEventListener('pointermove', onMove);
+    stage.addEventListener('pointerleave', onLeave);
   })();
 
   /* ---------------------------------------------------------
